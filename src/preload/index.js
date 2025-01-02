@@ -1,8 +1,39 @@
 import { electronAPI } from '@electron-toolkit/preload'
-import { contextBridge } from 'electron'
+import { contextBridge, ipcRenderer } from 'electron'
 
 // Custom APIs for renderer
-const api = {}
+const api = {
+  closePort: (channel) => {
+    const validChannels = ['close-port']
+    if (validChannels.includes(channel)) {
+      ipcRenderer.send(channel)
+    }
+  },
+  onMessage: (channel, callback) => {
+    const validChannels = ['message-from-main']
+    if (validChannels.includes(channel)) {
+      ipcRenderer.on(channel, (event, ...args) => callback(...args))
+    }
+  },
+  onWeighData: (channel, callback) => {
+    const validChannels = ['weigh-data']
+    if (validChannels.includes(channel)) {
+      ipcRenderer.on(channel, (event, ...args) => callback(...args))
+    }
+  },
+  readWeigh: (channel, data) => {
+    const validChannels = ['read-weigh']
+    if (validChannels.includes(channel)) {
+      ipcRenderer.send(channel, data)
+    }
+  },
+  sendMessage: (channel, data) => {
+    const validChannels = ['message-from-react']
+    if (validChannels.includes(channel)) {
+      ipcRenderer.send(channel, data)
+    }
+  }
+}
 
 // Use `contextBridge` APIs to expose Electron APIs to
 // renderer only if context isolation is enabled, otherwise

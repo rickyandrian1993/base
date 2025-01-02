@@ -1,11 +1,15 @@
 import { electronApp, is, optimizer } from '@electron-toolkit/utils'
 import { app, BrowserWindow, ipcMain, shell } from 'electron'
 import { join } from 'path'
+import { ReadlineParser, SerialPort } from 'serialport'
 import icon from '../../wb.ico'
+
+let mainWindow = null
+let port = null
 
 function createWindow() {
   // Create the browser window.
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 900,
     height: 670,
     show: false,
@@ -13,6 +17,7 @@ function createWindow() {
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
+      contextIsolation: true,
       sandbox: false
     }
   })
@@ -51,6 +56,50 @@ app.whenReady().then(() => {
 
   // IPC test
   ipcMain.on('ping', () => console.log('pong'))
+
+  ipcMain.on('message-from-react', (event, data) => {
+    console.log('Receive from React: ', data)
+
+    mainWindow.webContents.send('message-from-main', 'Hello from Electron main process')
+  })
+
+  // Read serialport data
+  ipcMain.on('read-weigh', async (event, options) => {
+    try {
+      if (!port) {
+        port = new SerialPort({
+          baudRate: Number(options.baudRate),
+          dataBits: options.dataBits,
+          stopBits: options.stopBits,
+          parity: options.parity,
+          path: options.com
+        })
+
+        port.on('open', () => console.log('Port Opened: ', options.com))
+      }
+
+      const parser = port.pipe(new ReadlineParser({ delimiter: '\r\n' }))
+
+      parser.on('data', (data) => {
+        console.log('serial data: ', data)
+        mainWindow.webContents.send('weigh-data', data)
+      })
+    } catch (error) {
+      console.log('Error: ', error)
+    }
+  })
+
+  ipcMain.on('close-port', async (event) => {
+    try {
+      await port.close(() => {
+        console.log('Port Close')
+        port = null
+        // port.on('error', (err) => ) // return error to client
+      })
+    } catch (error) {
+      console.log('Error close port: ', error)
+    }
+  })
 
   createWindow()
 
