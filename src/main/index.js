@@ -3,6 +3,8 @@ import { app, BrowserWindow, ipcMain, shell } from 'electron'
 import { join } from 'path'
 import { ReadlineParser, SerialPort } from 'serialport'
 import icon from '../../wb.ico'
+import { initConnection } from './database/connection'
+import UserController from './database/controllers/User/user'
 
 let mainWindow = null
 let port = null
@@ -21,7 +23,6 @@ function createWindow() {
       sandbox: false
     }
   })
-
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
   })
@@ -43,9 +44,10 @@ function createWindow() {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.whenReady().then(() => {
+app.whenReady().then(async () => {
+  await initConnection()
   // Set app user model id for windows
-  electronApp.setAppUserModelId('com.electron')
+  electronApp.setAppUserModelId(`com.${import.meta.env?.VITE_KEY?.toLowerCase()}`)
 
   // Default open or close DevTools by F12 in development
   // and ignore CommandOrControl + R in production.
@@ -55,7 +57,10 @@ app.whenReady().then(() => {
   })
 
   // IPC test
-  ipcMain.on('ping', () => console.log('pong'))
+  ipcMain.on(
+    'ping',
+    async () => await UserController.createUser({ username: 'asd', email: 'asd@mail.com' })
+  )
 
   ipcMain.on('message-from-react', (event, data) => {
     console.log('Receive from React: ', data)
