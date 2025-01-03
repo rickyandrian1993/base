@@ -3,8 +3,16 @@ import path from 'path'
 import { Sequelize } from 'sequelize'
 
 const isDev = !app.isPackaged
-const devDbPath = path.join(__dirname, `database/${import.meta.env.VITE_DB_PATH}`)
-const prodDbPath = path.join(app.getPath('userData'), `database/${import.meta.env.VITE_DB_PATH}`)
+const devDbPath = path.join(
+  __dirname,
+  '..',
+  '..',
+  'src',
+  'main',
+  'database',
+  import.meta.env.VITE_DB_PATH
+)
+const prodDbPath = path.join(app.getPath('userData'), 'database', import.meta.env.VITE_DB_PATH)
 const dbPath = isDev ? devDbPath : prodDbPath
 
 const sequelize = new Sequelize({

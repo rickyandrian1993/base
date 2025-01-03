@@ -5,3 +5,4 @@ out
 *.log*
 .env
 package-lock.json
+/src/main/database/*.db
