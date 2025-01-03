@@ -1,3 +1,4 @@
+// DATA MANIPULATION
 import UserDto from '../dto/userDto'
 
 const UserMapper = {
