@@ -1,3 +1,4 @@
+import SerialPort from './serialport'
 import User from './user'
 
-export { User }
+export { SerialPort, User }

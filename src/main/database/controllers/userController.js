@@ -1,5 +1,5 @@
-import UserMapper from '../../mapper/userMapper'
-import UserRepository from '../../repository/userRepository'
+import UserMapper from '../mapper/userMapper'
+import UserRepository from '../repository/userRepository'
 
 const UserController = {
   async getAllUsers() {

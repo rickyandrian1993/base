@@ -4,7 +4,7 @@ import { join } from 'path'
 import { ReadlineParser, SerialPort } from 'serialport'
 import icon from '../../wb.ico'
 import { initConnection } from './database/connection'
-import UserController from './database/controllers/User/user'
+import UserController from './database/controllers/userController'
 
 let mainWindow = null
 let port = null

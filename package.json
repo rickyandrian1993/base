@@ -1,6 +1,6 @@
 {
   "name": "weigh-bridge",
-  "version": "2.0.1",
+  "version": "2.0.0",
   "description": "WB Desktop App",
   "main": "./out/main/index.js",
   "author": "WDN",
