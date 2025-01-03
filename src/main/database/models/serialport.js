@@ -1,41 +1,40 @@
-import { DataTypes, Model } from 'sequelize'
-import { sequelize } from '../connection'
+import { DataTypes } from 'sequelize'
+import Base from './base'
 
-class SerialPort extends Model {}
-
-SerialPort.init(
-  {
-    uuid: {
-      type: DataTypes.UUIDV4,
-      defaultValue: DataTypes.UUIDV4,
-      primaryKey: true,
-      allowNull: false
-    },
-    baudrate: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    databits: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    stopbits: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    parity: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    com: {
-      type: DataTypes.STRING,
-      allowNull: false
-    }
-  },
-  {
-    sequelize,
-    modelName: 'SerialPort'
+class SerialPort extends Base {
+  static initialize() {
+    this.init(
+      {
+        ...this.getBaseFields(),
+        baudrate: {
+          type: DataTypes.INTEGER,
+          allowNull: false
+        },
+        databits: {
+          type: DataTypes.INTEGER,
+          allowNull: false
+        },
+        stopbits: {
+          type: DataTypes.INTEGER,
+          allowNull: false
+        },
+        parity: {
+          type: DataTypes.STRING,
+          allowNull: false
+        },
+        com: {
+          type: DataTypes.STRING,
+          allowNull: false
+        }
+      },
+      {
+        sequelize: this.sequelize,
+        modelName: 'SerialPort'
+      }
+    )
   }
-)
+}
+
+SerialPort.initialize()
 
 export default SerialPort
