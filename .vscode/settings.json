@@ -27,6 +27,12 @@
   "breadcrumbs.filePath": "on",
   "breadcrumbs.symbolPath": "off",
 
+  "eslint.options": {
+    "parserOptions": {
+      "ecmaVersion": 2022
+    }
+  },
+
   /** -- Editor Settings -- **/
   "editor.accessibilitySupport": "off",
   "editor.cursorStyle": "line",

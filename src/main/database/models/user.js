@@ -1,42 +1,32 @@
-import { DataTypes, Model } from 'sequelize'
-import { sequelize } from '../connection'
+import { STRING, TEXT } from 'sequelize'
+import Base from './base'
 
-class User extends Model {
-  static async softDelete(id) {
-    return this.update({ softDeleted: true }, { where: { id } })
-  }
-
-  static async restore(id) {
-    return this.update({ softDeleted: false }, { where: { id } })
+class User extends Base {
+  static initialize() {
+    this.init(
+      {
+        ...this.getBaseFields(),
+        username: {
+          type: STRING,
+          allowNull: false
+        },
+        email: {
+          type: STRING,
+          allowNull: false,
+          unique: true
+        },
+        address: {
+          type: TEXT
+        }
+      },
+      {
+        sequelize: this.sequelize,
+        modelName: 'User'
+      }
+    )
   }
 }
 
-User.init(
-  {
-    uuid: {
-      type: DataTypes.UUIDV4,
-      defaultValue: DataTypes.UUIDV4,
-      primaryKey: true,
-      allowNull: false
-    },
-    username: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true
-    },
-    address: {
-      type: DataTypes.TEXT
-    }
-  },
-  {
-    sequelize,
-    paranoid: true,
-    modelName: 'User'
-  }
-)
+User.initialize()
 
 export default User

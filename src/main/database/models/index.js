@@ -1,4 +1,5 @@
+import Base from './base'
 import SerialPort from './serialport'
 import User from './user'
 
-export { SerialPort, User }
+export { Base, SerialPort, User }
