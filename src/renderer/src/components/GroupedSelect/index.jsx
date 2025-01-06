@@ -1,19 +1,16 @@
 import { Select } from 'antd'
 import PropTypes from 'prop-types'
-import { useState } from 'react'
 
 const { Option, OptGroup } = Select
 
 const GroupedSelect = ({ optionsGroup }) => {
-  const [value, setValue] = useState(null)
-
   const handleChange = (value) => {
-    setValue(value)
+    console.log('value', value)
   }
 
   const filterOptions = (input, option) => {
-    const groupName = option.groupLabel || ''
-    const optionLabel = option.children.toLowerCase()
+    const groupName = option.groupLabel || '' // Fallback to empty string if undefined
+    const optionLabel = option.children?.toLowerCase() || '' // Use optional chaining
     return (
       groupName.toLowerCase().includes(input.toLowerCase()) ||
       optionLabel.includes(input.toLowerCase())
@@ -22,10 +19,11 @@ const GroupedSelect = ({ optionsGroup }) => {
 
   return (
     <Select
+      allowClear
       showSearch
-      value={value}
+      // value={value}
       style={{ width: '100%' }}
-      placeholder="Select an item"
+      placeholder="Select vehicle number"
       onChange={handleChange}
       filterOption={filterOptions}
     >

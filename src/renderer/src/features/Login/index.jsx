@@ -1,79 +1,106 @@
-import { Card, Select, Typography } from 'antd'
-import { useState } from 'react'
+import {
+  BankOutlined,
+  LockOutlined,
+  LoginOutlined,
+  PoweroffOutlined,
+  SecurityScanOutlined,
+  SettingOutlined,
+  UserOutlined
+} from '@ant-design/icons'
+import wideagri from '@renderer/assets/images/wide.png'
+import { Button, Card, Form, Input, Typography } from 'antd'
 import styled from 'styled-components'
 
 const Login = () => {
-  const groupedOptions = [
-    {
-      label: 'Fruits',
-      options: ['Apple', 'Banana', 'Orange']
-    },
-    {
-      label: 'Vegetables',
-      options: ['Carrot', 'Broccoli', 'Spinach']
-    }
-  ]
+  // const groupedOptions = [
+  //   {
+  //     label: 'Second Weigh',
+  //     options: ['KB1234AC', 'KB1111AC', 'KB4838LK']
+  //   },
+  //   {
+  //     label: 'Master Vehicle',
+  //     options: ['KB2222AA', 'KB3333AB', 'KB9230AJ']
+  //   }
+  // ]
 
-  const [options, setOptions] = useState({
-    mst_vehicle: [
-      { label: 'KB1234AC', value: 'KB1234AC' },
-      { label: 'KB1111AC', value: 'KB1111AC' }
-    ],
-    second_w: [
-      { label: 'KB2222AA', value: 'KB2222AA' },
-      { label: 'KB3333AB', value: 'KB3333AB' }
-    ]
-  })
-  const handleChange = (value) => {
-    console.log(`selected ${value}`)
-  }
-
-  const onSearch = (value) => {
-    console.log('search:', value)
+  const submitHandler = (values) => {
+    console.log(values)
   }
 
   return (
-    <StyledCard>
-      <Typography.Title>Login</Typography.Title>
-      <Select
-        placeholder="Please select vehicle number"
-        showSearch
-        onSearch={onSearch}
-        optionFilterProp="label"
-        style={{ width: '100%' }}
-        onChange={handleChange}
-        options={[
-          {
-            label: <span>Timbangan Kedua</span>,
-            title: 'second_w',
-            options: options.second_w
-          },
-          {
-            label: <span>Master Kendaraan</span>,
-            title: 'mst_vehicle',
-            options: options.mst_vehicle
-          }
+    <Form name="login" initialValues={{ remember: true }} onFinish={submitHandler}>
+      <StyledCard
+        cover={
+          <img
+            alt="wideagri"
+            src={wideagri}
+            style={{ width: '220px', margin: 'auto', paddingTop: 20 }}
+          />
+        }
+        actions={[
+          <Button
+            key="login"
+            color="green"
+            htmlType="submit"
+            title="Login"
+            shape="circle"
+            variant="solid"
+            icon={<LoginOutlined />}
+          />,
+          <Button
+            key="fingerprint"
+            title="Fingerprint"
+            type="primary"
+            shape="circle"
+            icon={<SecurityScanOutlined />}
+            onClick={() => console.log('Fingerprint')}
+          />,
+          <Button
+            key="setting"
+            title="Setting"
+            type="primary"
+            shape="circle"
+            icon={<SettingOutlined />}
+            onClick={() => console.log('Setting')}
+          />,
+          <Button
+            key="logout"
+            title="Logout"
+            danger
+            type="primary"
+            shape="circle"
+            icon={<PoweroffOutlined />}
+            onClick={() => console.log('Close App')}
+          />
         ]}
-        filterOption={(input, option) => {
-          console.log(input, option)
-          // try {
-          //   const filterMstVechicle = options.mst_vehicle.filter(
-          //     (e) => input.toLowerCase() === e.label.toLowerCase()
-          //   )
-          //   const filterSecondW = options.second_w.filter(
-          //     (e) => input.toLowerCase() === e.label.toLowerCase()
-          //   )
+      >
+        <Typography.Title style={{ textAlign: 'center' }}>Weigh Bridge System</Typography.Title>
 
-          //   setOptions({ mst_vehicle: filterMstVechicle, second_w: filterSecondW })
-          // } catch (error) {
-          //   console.log('error', error)
-          //   return false
-          // }
-          // return what?
-          return true
-        }}
-      />
-    </StyledCard>
+        <Form.Item
+          name="username"
+          rules={[
+            {
+              required: true,
+              message: 'Please input your Username!'
+            }
+          ]}
+        >
+          <Input prefix={<UserOutlined />} placeholder="Username" />
+        </Form.Item>
+        <Form.Item
+          name="password"
+          rules={[
+            {
+              required: true,
+              message: 'Please input your Password!'
+            }
+          ]}
+        >
+          <Input prefix={<LockOutlined />} type="password" placeholder="Password" />
+        </Form.Item>
+        <Input name="mill" prefix={<BankOutlined />} placeholder="Mill" disabled />
+      </StyledCard>
+    </Form>
   )
 }
 

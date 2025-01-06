@@ -5,9 +5,13 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-image: url('./images/plantations.jpg');
+  background-image: url('./images/background.jpeg');
   background-size: cover;
   user-select: none;
+}
+
+.ant-form-item {
+  margin-bottom: 8px;
 }
 
 code {
