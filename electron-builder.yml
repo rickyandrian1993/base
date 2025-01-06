@@ -12,6 +12,9 @@ asarUnpack:
 win:
   executableName: weigh-bridge
   icon: wb.ico
+  publish:
+    provider: generic
+    # url: http://10.10.24.68:5000/
 nsis:
   artifactName: ${name}-${version}-setup.${ext}
   shortcutName: ${productName}
@@ -22,4 +25,4 @@ appImage:
 npmRebuild: false
 publish:
   provider: generic
-  url: https://example.com/auto-updates
+  # url: http://10.10.24.68:5000/
