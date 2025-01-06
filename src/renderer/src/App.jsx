@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
+import { Route, Routes } from 'react-router-dom'
 import electronLogo from './assets/electron.svg'
 import { WBButton } from './components'
+import { Login } from './features'
 
 function App() {
   const [timbangan, setTimbangan] = useState(0)
@@ -64,6 +66,12 @@ function App() {
           <button onClick={closePort}>Close port</button>
         </div>
       </div>
+      <Routes>
+        <Route path="login" element={<Login />} />
+        <Route element={}>
+          <Route path="*" element={} />
+        </Route>
+      </Routes>
     </>
   )
 }
