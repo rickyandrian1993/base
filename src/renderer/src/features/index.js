@@ -1,3 +1,4 @@
+import Dashoard from './Dashboard'
 import Login from './Login'
 
-export { Login }
+export { Dashoard, Login }
