@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import electronLogo from './assets/electron.svg'
-import Versions from './components/Versions'
+import { WBButton } from './components'
 
 function App() {
   const [timbangan, setTimbangan] = useState(0)
@@ -59,12 +59,11 @@ function App() {
           <a target="_blank" rel="noreferrer" onClick={ipcHandle}>
             Send IPC
           </a>
-          <button onClick={sendMessage}>Send IPC</button>
+          <WBButton onClick={sendMessage} title={'send IPC'} />
           <button onClick={readWeigh}>Read serial</button>
           <button onClick={closePort}>Close port</button>
         </div>
       </div>
-      <Versions></Versions>
     </>
   )
 }

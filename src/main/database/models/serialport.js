@@ -29,7 +29,7 @@ class SerialPort extends Base {
       },
       {
         sequelize: this.sequelize,
-        modelName: 'SerialPort'
+        modelName: 'serial_port'
       }
     )
   }

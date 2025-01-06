@@ -21,7 +21,7 @@ class User extends Base {
       },
       {
         sequelize: this.sequelize,
-        modelName: 'User'
+        modelName: 'user'
       }
     )
   }

@@ -27,11 +27,15 @@
   "breadcrumbs.filePath": "on",
   "breadcrumbs.symbolPath": "off",
 
-  "eslint.options": {
-    "parserOptions": {
-      "ecmaVersion": 2022
-    }
-  },
+  // "eslint.options": {
+  //   "parserOptions": {
+  //     "ecmaFeatures": {
+  //       "jsx": true
+  //     },
+  //     "sourceType": "module",
+  //     "ecmaVersion": 2021
+  //   }
+  // },
 
   /** -- Editor Settings -- **/
   "editor.accessibilitySupport": "off",
