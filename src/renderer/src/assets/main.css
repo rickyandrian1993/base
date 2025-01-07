@@ -5,9 +5,7 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-image: url('./images/background.jpeg');
-  background-size: cover;
-  user-select: none;
+  position: relative;
 }
 
 #root {
@@ -15,5 +13,21 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-bottom: 80px;
+}
+
+*::-webkit-scrollbar {
+  height: 2px;
+  width: 4px;
+}
+*::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: var(--neutral-color);
+}
+*::-webkit-scrollbar:hover {
+  height: 4px;
+  width: 10px;
+}
+*::-webkit-scrollbar-track {
+  background-color: var(--background-color);
+  border-radius: 8px;
 }

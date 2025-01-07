@@ -48,8 +48,8 @@ const LoginForm = ({ form }) => {
           onClick={() => console.log('Fingerprint')}
         />,
         <Button
-          key="logout"
-          title="Logout"
+          key="exit"
+          title="Close App"
           danger
           type="primary"
           shape="circle"

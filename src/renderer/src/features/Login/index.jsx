@@ -1,4 +1,4 @@
-import { WBForm } from '@renderer/components'
+import { BackgroundImage, WBForm } from '@renderer/components'
 import { Form } from 'antd'
 import FloatingButtonGroup from './_FloatingButtonGroup'
 import LoginForm from './_LoginForm'
@@ -23,6 +23,7 @@ const Login = () => {
   return (
     <>
       <WBForm form={form} initialValues={{ remember: true }} onFinish={submitHandler}>
+        <BackgroundImage />
         <LoginForm form={form} />
       </WBForm>
       <FloatingButtonGroup />

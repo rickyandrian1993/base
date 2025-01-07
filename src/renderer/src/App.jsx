@@ -71,7 +71,7 @@ function App() {
         <Route element={<ProtectedRoute />}>
           <Route path="*" element={<Dashoard />} />
         </Route>
-        <Route path="/setting">
+        <Route path="/sys-config">
           <Route index element={<Setting />} />
           {/* <Route path="commodity" element={<SettingCommodity />} />
           <Route path="port" element={<Port />} />
