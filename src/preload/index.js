@@ -1,5 +1,6 @@
 import { electronAPI } from '@electron-toolkit/preload'
 import { contextBridge, ipcRenderer } from 'electron'
+import { logToFile } from '../main/logger'
 
 // Custom APIs for renderer
 const api = {
@@ -44,6 +45,7 @@ if (process.contextIsolated) {
     contextBridge.exposeInMainWorld('api', api)
   } catch (error) {
     console.error(error)
+    logToFile(`Error Context Bridge: ${error}`)
   }
 } else {
   window.electron = electronAPI

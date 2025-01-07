@@ -1,7 +1,7 @@
 // import { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 // import { WBButton } from './components'
-import { Dashoard, Login } from './features'
+import { Dashoard, Login, Setting } from './features'
 import ProtectedRoute from './routes/ProtectedRoute'
 
 function App() {
@@ -70,6 +70,13 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route element={<ProtectedRoute />}>
           <Route path="*" element={<Dashoard />} />
+        </Route>
+        <Route path="/setting">
+          <Route index element={<Setting />} />
+          {/* <Route path="commodity" element={<SettingCommodity />} />
+          <Route path="port" element={<Port />} />
+          <Route path="fingerprint" element={<Fingerprint />} />
+          <Route path="mill" element={<MillSetting />} /> */}
         </Route>
       </Routes>
     </>

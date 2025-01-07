@@ -5,6 +5,7 @@ import { ReadlineParser, SerialPort } from 'serialport'
 import icon from '../../wb.ico'
 import { initConnection } from './database/connection'
 import UserController from './database/controllers/userController'
+import { logToFile } from './logger'
 
 let mainWindow = null
 let port = null
@@ -80,29 +81,29 @@ app.whenReady().then(async () => {
           path: options.com
         })
 
-        port.on('open', () => console.log('Port Opened: ', options.com))
+        port.on('open', () => console.log('Port Opened: ', options.com)) // Development Purpose
       }
 
       const parser = port.pipe(new ReadlineParser({ delimiter: '\r\n' }))
 
       parser.on('data', (data) => {
-        console.log('serial data: ', data)
+        console.log('serial data: ', data) // Development Purpose
         mainWindow.webContents.send('weigh-data', data)
       })
     } catch (error) {
-      console.log('Error: ', error)
+      logToFile(`Error Read Weigh: ${error}`)
     }
   })
 
   ipcMain.on('close-port', async (event) => {
     try {
       await port.close(() => {
-        console.log('Port Close')
+        console.log('Port Close') // Development Purpose
         port = null
         // port.on('error', (err) => ) // return error to client
       })
     } catch (error) {
-      console.log('Error close port: ', error)
+      logToFile(`Error close port: ${error}`)
     }
   })
 
