@@ -2,6 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@main/*": ["src/main/*"],
       "@renderer/*": ["src/renderer/src/*"]
     }
   },

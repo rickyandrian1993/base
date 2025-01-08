@@ -4,7 +4,12 @@ import { resolve } from 'path'
 
 export default defineConfig({
   main: {
-    plugins: [externalizeDepsPlugin()]
+    plugins: [externalizeDepsPlugin()],
+    resolve: {
+      alias: {
+        '@main': resolve(__dirname, 'src/main')
+      }
+    }
   },
   preload: {
     plugins: [externalizeDepsPlugin()]
@@ -12,7 +17,7 @@ export default defineConfig({
   renderer: {
     resolve: {
       alias: {
-        '@renderer': resolve('src/renderer/src')
+        '@renderer': resolve(__dirname, 'src/renderer/src')
       }
     },
     build: {

@@ -1,6 +1,19 @@
-import Base from './base'
 import SerialPort from './serialport'
+import ServiceCenter from './servicecenter'
 import SystemConfig from './SystemConfig'
 import User from './user'
 
-export { Base, SerialPort, SystemConfig, User }
+const models = {
+  User,
+  ServiceCenter,
+  SerialPort,
+  SystemConfig
+}
+
+Object.values(models).forEach((model) => {
+  if (typeof model.associate === 'function') {
+    model.associate(models)
+  }
+})
+
+export default { ...models }

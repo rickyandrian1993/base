@@ -1,4 +1,7 @@
-import { User } from '../models'
+// import { User } from '../models'
+import models from '../models'
+
+const { User } = models
 
 const UserRepository = {
   async findAll(includeDeleted = false) {

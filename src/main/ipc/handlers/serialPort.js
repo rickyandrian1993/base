@@ -1,5 +1,5 @@
+import { mainWindow } from '@main/index'
 import { ReadlineParser, SerialPort } from 'serialport'
-import { mainWindow } from '../../index'
 
 let port = null
 
