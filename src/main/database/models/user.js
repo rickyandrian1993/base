@@ -3,9 +3,9 @@ import Base from './base'
 
 class User extends Base {
   static associate(models) {
-    this.belongsTo(models.ServiceCenter, {
+    this.hasMany(models.ServiceCenter, {
       foreignKey: 'users_id',
-      as: 'serviceCenter'
+      as: 'service_center'
     })
   }
   static initialize() {
