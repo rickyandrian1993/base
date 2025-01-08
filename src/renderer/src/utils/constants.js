@@ -43,3 +43,8 @@ export const comOptions = [
   { value: 'COM11', label: 'COM 11' },
   { value: 'COM12', label: 'COM 12' }
 ]
+
+export const mainMenuType = [
+  { value: 'Kalimantan', label: 'Kalimantan' },
+  { value: 'Sumatera', label: 'Sumatera' }
+]

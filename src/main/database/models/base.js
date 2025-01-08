@@ -11,26 +11,26 @@ class Base extends Model {
         defaultValue: UUIDV4,
         allowNull: false
       },
-      isActived: {
+      is_actived: {
         type: BOOLEAN,
         defaultValue: true
       },
-      isDeleted: {
+      is_deleted: {
         type: BOOLEAN,
         defaultValue: false
       },
-      createdAt: {
+      created_at: {
         type: DATE,
         defaultValue: NOW
       },
-      createdBy: {
+      created_by: {
         type: STRING
       },
-      updatedAt: {
+      updated_at: {
         type: DATE,
         defaultValue: NOW
       },
-      updatedBy: {
+      updated_by: {
         type: STRING
       }
     }

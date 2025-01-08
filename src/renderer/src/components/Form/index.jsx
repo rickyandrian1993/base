@@ -54,7 +54,7 @@ const StyledForm = styled(Form)`
         padding: 0 0 0 0 !important;
         padding-inline-start: 4px !important;
         margin-left: 8px !important;
-        background-color: var(--background-color);
+        background-color: #fff;
         position: absolute;
         top: -9px;
         z-index: 1;
@@ -82,6 +82,10 @@ const StyledForm = styled(Form)`
         &:has(:disabled) {
           border: 1px solid var(--neutral-color);
           * {
+            color: var(--primary-color);
+          }
+          .ant-select-selection-placeholder,
+          *::placeholder {
             color: var(--primary-color);
           }
         }
