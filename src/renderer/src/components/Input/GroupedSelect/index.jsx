@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const { Option, OptGroup } = Select
 
-const GroupedSelect = ({ optionsGroup }) => {
+const GroupedSelectInput = ({ optionsGroup }) => {
   const handleChange = (value) => {
     console.log('value', value)
   }
@@ -40,8 +40,8 @@ const GroupedSelect = ({ optionsGroup }) => {
   )
 }
 
-GroupedSelect.propTypes = {
+GroupedSelectInput.propTypes = {
   optionsGroup: PropTypes.array
 }
 
-export default GroupedSelect
+export default GroupedSelectInput

@@ -1,15 +1,13 @@
 import { Form, Input } from 'antd'
 import PropTypes from 'prop-types'
 
-const TextInput = (props) => {
-  const { name, label, rules = [], placeholder, hidden } = props
-
+const TextInput = ({ name, label, rules = [], placeholder, hidden, ...rest }) => {
   return (
     <Form.Item name={name} label={label} rules={rules} hidden={hidden}>
       {name === 'password' || name === 'confirm_password' ? (
-        <Input.Password {...props} placeholder={placeholder} allowClear />
+        <Input.Password {...rest} placeholder={placeholder} allowClear />
       ) : (
-        <Input {...props} placeholder={placeholder} />
+        <Input {...rest} placeholder={placeholder} />
       )}
     </Form.Item>
   )

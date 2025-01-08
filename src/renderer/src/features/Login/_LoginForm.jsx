@@ -62,6 +62,7 @@ const LoginForm = ({ form }) => {
       <TextInput
         name="username"
         label="Username"
+        placeholder="Please input username"
         rules={[validator.require]}
         prefix={<UserOutlined />}
         onChange={(e) => {
@@ -75,6 +76,7 @@ const LoginForm = ({ form }) => {
       <TextInput
         name="password"
         label="Password"
+        placeholder="Please input password"
         rules={[validator.require]}
         prefix={<LockOutlined />}
       />

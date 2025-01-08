@@ -11,7 +11,7 @@ module.exports = {
       jsx: true
     },
     sourceType: 'module',
-    ecmaVersion: 2021
+    ecmaVersion: 2022
   },
   extends: [
     'eslint:recommended',

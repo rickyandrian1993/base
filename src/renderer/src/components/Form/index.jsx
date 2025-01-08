@@ -2,9 +2,7 @@ import { Form } from 'antd'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-function RATForm(props) {
-  const { children, ...rest } = props
-
+function RATForm({ children, ...rest }) {
   const formItemLayout = {
     labelCol: {
       span: 24

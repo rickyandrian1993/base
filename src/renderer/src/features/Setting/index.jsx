@@ -2,6 +2,8 @@ import { BackgroundImage, WBDivider } from '@renderer/components'
 import { Card, Col, Row, Typography } from 'antd'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import MillSetting from './_MillSetting'
+import PortSetting from './_PortSetting'
 
 const Setting = () => {
   return (
@@ -22,13 +24,10 @@ const Setting = () => {
           style={{ maxHeight: 'calc(100% - (46px + 24px + 24px))', overflowY: 'auto' }}
         >
           <Col span={12}>
-            <Card>Port Setting</Card>
+            <PortSetting />
           </Col>
           <Col span={12}>
-            <Card>Mill Setting</Card>
-          </Col>
-          <Col span={12}>
-            <Card>System Config</Card>
+            <MillSetting />
           </Col>
           <Col span={12}>
             <Card>System Config</Card>
@@ -36,16 +35,7 @@ const Setting = () => {
           <Col span={12}>
             <Card>System Config</Card>
           </Col>
-          <Col span={12}>
-            <Card>System Config</Card>
-          </Col>
-          <Col span={12}>
-            <Card>Port Setting</Card>
-          </Col>
-          <Col span={12}>
-            <Card>System Config</Card>
-          </Col>
-          <Col span={12}>
+          {/* <Col span={12}>
             <Card>System Config</Card>
           </Col>
           <Col span={12}>
@@ -63,6 +53,18 @@ const Setting = () => {
           <Col span={12}>
             <Card>System Config</Card>
           </Col>
+          <Col span={12}>
+            <Card>Port Setting</Card>
+          </Col>
+          <Col span={12}>
+            <Card>System Config</Card>
+          </Col>
+          <Col span={12}>
+            <Card>System Config</Card>
+          </Col>
+          <Col span={12}>
+            <Card>System Config</Card>
+          </Col> */}
           <Col span={12}>
             <Link to="/login">
               <Card style={{ textAlign: 'center' }}>Back to Login</Card>
