@@ -32,8 +32,8 @@ const PortSetting = () => {
           </Typography.Title>
         }
         actions={[
-          <WBButton key="save" title="Save" htmlType="submit" fullwidth />,
-          <WBButton key="cancel" title="Cancel" danger fullwidth />
+          <WBButton key="save" title="Save" htmlType="submit" />,
+          <WBButton key="cancel" title="Cancel" danger />
         ]}
       >
         <SelectInput

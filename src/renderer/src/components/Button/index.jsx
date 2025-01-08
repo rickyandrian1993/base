@@ -12,7 +12,8 @@ const WBButton = ({ title, onClick, ...rest }) => {
 
 const StyledButton = styled(Button)`
   /* ${({ fullwidth }) => fullwidth && `width: 100%; margin-inline: 8px`} */
-  width: 200px;
+  width: 12em;
+  max-width: 100%;
 `
 
 WBButton.propTypes = {

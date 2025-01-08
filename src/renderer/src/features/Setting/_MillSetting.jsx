@@ -20,8 +20,8 @@ const MillSetting = () => {
   const btnAction = {
     unlock: [<WBButton key="unlock" title="Unlock" onClick={() => setLockState(false)} />],
     save: [
-      <WBButton key="save" title="Save" htmlType="submit" fullwidth />,
-      <WBButton key="cancel" title="Cancel" danger onClick={() => setLockState(true)} fullwidth />
+      <WBButton key="save" title="Save" htmlType="submit" />,
+      <WBButton key="cancel" title="Cancel" danger onClick={() => setLockState(true)} />
     ]
   }
 
