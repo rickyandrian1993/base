@@ -1,18 +1,32 @@
-import { JSON } from 'sequelize'
+import { JSON, STRING, UUIDV4 } from 'sequelize'
 import Base from './base'
 
 class SystemConfig extends Base {
   static initialize() {
     this.init(
       {
-        ...this.getBaseFields(),
-        sys_config: {
+        id: {
+          type: UUIDV4,
+          primaryKey: true,
+          defaultValue: UUIDV4,
+          allowNull: false
+        },
+        config: {
           type: JSON,
+          allowNull: false
+        },
+        createdBy: {
+          type: STRING,
+          allowNull: false
+        },
+        updatedBy: {
+          type: STRING,
           allowNull: false
         }
       },
       {
         sequelize: this.sequelize,
+        underscored: true,
         modelName: 'system_config'
       }
     )

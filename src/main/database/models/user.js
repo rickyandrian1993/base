@@ -1,4 +1,4 @@
-import { STRING, TEXT } from 'sequelize'
+import { STRING, TEXT, UUIDV4 } from 'sequelize'
 import Base from './base'
 
 class User extends Base {
@@ -11,7 +11,12 @@ class User extends Base {
   static initialize() {
     this.init(
       {
-        ...this.getBaseFields(),
+        uuid: {
+          type: UUIDV4,
+          primaryKey: true,
+          defaultValue: UUIDV4,
+          allowNull: false
+        },
         username: {
           type: STRING,
           allowNull: false
@@ -23,7 +28,8 @@ class User extends Base {
         },
         address: {
           type: TEXT
-        }
+        },
+        ...this.getBaseFields()
       },
       {
         sequelize: this.sequelize,

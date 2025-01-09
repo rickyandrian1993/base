@@ -4,34 +4,39 @@ import { logToFile } from '../main/logger'
 
 // Custom APIs for renderer
 const api = {
-  closePort: (channel) => {
-    const validChannels = ['close-port']
-    if (validChannels.includes(channel)) {
-      ipcRenderer.send(channel)
-    }
-  },
   onMessage: (channel, callback) => {
     const validChannels = ['message-from-main']
     if (validChannels.includes(channel)) {
       ipcRenderer.on(channel, (event, ...args) => callback(...args))
     }
   },
-  onWeighData: (channel, callback) => {
-    const validChannels = ['weigh-data']
-    if (validChannels.includes(channel)) {
-      ipcRenderer.on(channel, (event, ...args) => callback(...args))
-    }
-  },
-  readWeigh: (channel, data) => {
-    const validChannels = ['read-weigh']
-    if (validChannels.includes(channel)) {
-      ipcRenderer.send(channel, data)
-    }
-  },
+
   sendMessage: (channel, data) => {
     const validChannels = ['message-from-react']
     if (validChannels.includes(channel)) {
       ipcRenderer.send(channel, data)
+    }
+  },
+  closePort: (channel) => {
+    const validChannels = ['close-port']
+    if (validChannels.includes(channel)) ipcRenderer.send(channel)
+  },
+  getWeigh: (channel, data) => {
+    const validChannels = ['get-weigh']
+    if (validChannels.includes(channel)) {
+      return ipcRenderer.send(channel, data)
+    }
+  },
+  setWeigh: (channel, callback) => {
+    const validChannels = ['set-weigh']
+    if (validChannels.includes(channel)) {
+      ipcRenderer.on(channel, (event, ...args) => callback(...args))
+    }
+  },
+  updateData: (channel, payload) => {
+    const validChannels = ['update-data']
+    if (validChannels.includes(channel)) {
+      return ipcRenderer.invoke(channel, payload)
     }
   }
 }

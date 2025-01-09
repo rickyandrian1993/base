@@ -1,16 +1,10 @@
-import { BOOLEAN, DATE, Model, NOW, STRING, UUIDV4 } from 'sequelize'
+import { BOOLEAN, DATE, Model, NOW, STRING } from 'sequelize'
 import { sequelize } from '../connection'
 
 class Base extends Model {
   static sequelize = sequelize
   static getBaseFields() {
     return {
-      uuid: {
-        type: UUIDV4,
-        primaryKey: true,
-        defaultValue: UUIDV4,
-        allowNull: false
-      },
       is_actived: {
         type: BOOLEAN,
         defaultValue: true
@@ -24,7 +18,8 @@ class Base extends Model {
         defaultValue: NOW
       },
       created_by: {
-        type: STRING
+        type: STRING,
+        allowNull: false
       },
       updated_at: {
         type: DATE,

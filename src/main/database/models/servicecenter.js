@@ -12,16 +12,21 @@ class ServiceCenter extends Base {
   static initialize() {
     this.init(
       {
-        ...this.getBaseFields(),
+        uuid: {
+          type: UUIDV4,
+          primaryKey: true,
+          defaultValue: UUIDV4,
+          allowNull: false
+        },
         userId: {
           type: UUIDV4,
           allowNull: false
         },
-
         name: {
           type: STRING,
           allowNull: false
-        }
+        },
+        ...this.getBaseFields()
       },
       {
         sequelize: this.sequelize,
@@ -32,6 +37,5 @@ class ServiceCenter extends Base {
 }
 
 ServiceCenter.initialize()
-// ServiceCenter.associate(User())
 
 export default ServiceCenter
