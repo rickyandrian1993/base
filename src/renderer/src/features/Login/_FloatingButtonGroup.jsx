@@ -41,7 +41,7 @@ const FloatingButtonGroup = () => {
     window.api.setWeigh('set-weigh', (data) => console.log('data', data))
 
     return () => {
-      window.api.onWeighData(() => {})
+      window.api.setWeigh(() => {})
     }
   }, [])
 
@@ -66,7 +66,7 @@ const FloatingButtonGroup = () => {
         tooltip={<span>Update Data</span>}
         onClick={updateDataHandler}
       />
-      <Link to={'/sys-config'}>
+      <Link to={'/config'}>
         <FloatButton icon={<SlidersOutlined />} tooltip={<span>System Configuration</span>} />
       </Link>
     </FloatButton.Group>

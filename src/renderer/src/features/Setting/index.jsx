@@ -1,13 +1,30 @@
-import { BackgroundImage, WBDivider } from '@renderer/components'
+import { BackgroundImage, WBButton, WBDivider } from '@renderer/components'
 import { Card, Col, Row, Typography } from 'antd'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import MillSetting from './_MillSetting'
 import PortSetting from './_PortSetting'
 
 const Setting = () => {
+  const [modal, setModal] = useState({
+    port: { open: false },
+    mill: { open: false },
+    fingerprint: { open: false }
+  })
+
+  const modalHandler = (section, state) =>
+    setModal((prev) => ({ ...prev, [section]: { open: state } }))
+
   return (
     <>
+      {modal.port.open && (
+        <PortSetting open={modal.port.open} onCancel={() => modalHandler('port', false)} />
+      )}
+      {modal.mill.open && (
+        <MillSetting open={modal.mill.open} onCancel={() => modalHandler('mill', false)} />
+      )}
+
       <BackgroundImage />
       <StyledCard>
         <Row justify="center" gutter={[24, 24]}>
@@ -23,51 +40,28 @@ const Setting = () => {
           gutter={[24, 24]}
           style={{ maxHeight: 'calc(100% - (46px + 24px + 24px))', overflowY: 'auto' }}
         >
-          <Col span={12}>
-            <PortSetting />
+          <Col span={6}>
+            <WBButton
+              title="Port"
+              variant="outlined"
+              color="cyan"
+              onClick={() => modalHandler('port', true)}
+            />
           </Col>
-          <Col span={12}>
-            <MillSetting />
+          <Col span={6}>
+            <WBButton
+              title="Mill"
+              variant="outlined"
+              color="cyan"
+              onClick={() => modalHandler('mill', true)}
+            />
           </Col>
-          <Col span={12}>
-            <Card>System Config</Card>
+          <Col span={6}>
+            <WBButton title="Fingerprint" variant="outlined" color="cyan" />
           </Col>
-          <Col span={12}>
-            <Card>System Config</Card>
-          </Col>
-          {/* <Col span={12}>
-            <Card>System Config</Card>
-          </Col>
-          <Col span={12}>
-            <Card>System Config</Card>
-          </Col>
-          <Col span={12}>
-            <Card>Port Setting</Card>
-          </Col>
-          <Col span={12}>
-            <Card>System Config</Card>
-          </Col>
-          <Col span={12}>
-            <Card>System Config</Card>
-          </Col>
-          <Col span={12}>
-            <Card>System Config</Card>
-          </Col>
-          <Col span={12}>
-            <Card>Port Setting</Card>
-          </Col>
-          <Col span={12}>
-            <Card>System Config</Card>
-          </Col>
-          <Col span={12}>
-            <Card>System Config</Card>
-          </Col>
-          <Col span={12}>
-            <Card>System Config</Card>
-          </Col> */}
-          <Col span={12}>
+          <Col span={6}>
             <Link to="/login">
-              <Card style={{ textAlign: 'center' }}>Back to Login</Card>
+              <WBButton danger title="Back" />
             </Link>
           </Col>
         </Row>

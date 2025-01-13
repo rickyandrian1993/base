@@ -1,8 +1,8 @@
-import { LockOutlined } from '@ant-design/icons'
-import { TextInput, WBButton, WBForm } from '@renderer/components'
+import { TextInput, WBButton, WBDivider, WBForm } from '@renderer/components'
 import { SelectInput } from '@renderer/components/Input'
 import { mainMenuType } from '@renderer/utils/constants'
-import { Card, Form, Typography } from 'antd'
+import { Col, Form, Modal, Row, Typography } from 'antd'
+import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
 
 const validator = {
@@ -12,53 +12,53 @@ const validator = {
   }
 }
 
-const MillSetting = () => {
+const MillSetting = ({ open, onCancel }) => {
   const [form] = Form.useForm()
   const [millOptions, setMillOptions] = useState([])
-  const [lockState, setLockState] = useState(true)
-
-  const btnAction = {
-    unlock: [<WBButton key="unlock" title="Unlock" onClick={() => setLockState(false)} />],
-    save: [
-      <WBButton key="save" title="Save" htmlType="submit" />,
-      <WBButton key="cancel" title="Cancel" danger onClick={() => setLockState(true)} />
-    ]
-  }
-
+  const [loading, setLoading] = useState(false)
+  console.log('loading', loading)
   useEffect(() => {
-    if (!lockState) {
-      setMillOptions([
-        { value: 'mill1', label: 'Mill A' },
-        { value: 'mill2', label: 'Mill B' }
-      ])
+    async function fetchMill() {
+      setLoading(true)
+      const data = await window.api.getMillServer('get-mill-server')
+      console.log('data', data)
+      setLoading(false)
     }
-  }, [lockState])
+
+    fetchMill()
+    setMillOptions([
+      { value: 'mill1', label: 'Mill A' },
+      { value: 'mill2', label: 'Mill B' }
+    ])
+
+    // return () => {
+    //   window.api.getMillServer(() => {})
+    // }
+  }, [])
 
   const submitHandler = (values) => {
     console.log('values', values)
-    setLockState(true)
   }
 
   return (
-    <WBForm form={form} onFinish={submitHandler}>
-      <Card
-        title={
-          <>
-            <Typography.Title level={4} style={{ textAlign: 'center' }}>
-              Mill Setting
-              {lockState && <LockOutlined style={{ marginInline: 8 }} title="This item is lock" />}
-            </Typography.Title>
-          </>
-        }
-        actions={lockState ? btnAction.unlock : btnAction.save}
-      >
+    <Modal
+      open={open}
+      title={
+        <Typography.Title level={4} style={{ textAlign: 'center' }}>
+          Mill
+        </Typography.Title>
+      }
+      footer={null}
+      closeIcon={false}
+    >
+      <WBDivider />
+      <WBForm form={form} onFinish={submitHandler}>
         <SelectInput
           name="mill"
           label="Mill"
           placeholder="Please select mill"
           rules={[validator.require]}
           options={millOptions}
-          disabled={lockState}
           allowClear
         />
         <SelectInput
@@ -67,7 +67,6 @@ const MillSetting = () => {
           placeholder="Please select main menu type"
           rules={[validator.require]}
           options={mainMenuType}
-          disabled={lockState}
           allowClear
         />
         <TextInput
@@ -75,12 +74,25 @@ const MillSetting = () => {
           label="KOP Default"
           placeholder="Please input default KOP"
           rules={[validator.require]}
-          disabled={lockState}
           allowClear
         />
-      </Card>
-    </WBForm>
+        <WBDivider />
+        <Row justify="end" gutter={[8, 0]}>
+          <Col>
+            <WBButton key="cancel" title="Cancel" danger onClick={onCancel} />
+          </Col>
+          <Col>
+            <WBButton type="primary" key="save" title="Save" htmlType="submit" />
+          </Col>
+        </Row>
+      </WBForm>
+    </Modal>
   )
+}
+
+MillSetting.propTypes = {
+  open: PropTypes.bool,
+  onCancel: PropTypes.func
 }
 
 export default MillSetting

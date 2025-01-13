@@ -71,10 +71,9 @@ function App() {
         <Route element={<ProtectedRoute />}>
           <Route path="*" element={<Dashoard />} />
         </Route>
-        <Route path="/sys-config">
+        <Route path="/config">
           <Route index element={<Setting />} />
           {/* <Route path="commodity" element={<SettingCommodity />} />
-          <Route path="port" element={<Port />} />
           <Route path="fingerprint" element={<Fingerprint />} />
           <Route path="mill" element={<MillSetting />} /> */}
         </Route>

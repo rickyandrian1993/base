@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const WBButton = ({ title, onClick, ...rest }) => {
   return (
-    <StyledButton type="primary" onClick={onClick} {...rest}>
+    <StyledButton onClick={onClick} {...rest}>
       {title}
     </StyledButton>
   )

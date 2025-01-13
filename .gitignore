@@ -4,5 +4,6 @@ out
 .DS_Store
 *.log*
 .env
+logs
 package-lock.json
 /src/main/database/*.db

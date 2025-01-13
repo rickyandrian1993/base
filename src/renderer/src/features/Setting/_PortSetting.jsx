@@ -1,4 +1,4 @@
-import { WBButton, WBForm } from '@renderer/components'
+import { WBButton, WBDivider, WBForm } from '@renderer/components'
 import { SelectInput } from '@renderer/components/Input'
 import {
   baudrateOptions,
@@ -7,7 +7,8 @@ import {
   parityOptions,
   stopBitOptions
 } from '@renderer/utils/constants'
-import { Card, Form, Typography } from 'antd'
+import { Col, Form, Modal, Row, Typography } from 'antd'
+import PropTypes from 'prop-types'
 
 const validator = {
   require: {
@@ -16,7 +17,7 @@ const validator = {
   }
 }
 
-const PortSetting = () => {
+const PortSetting = ({ open, onCancel }) => {
   const [form] = Form.useForm()
 
   const submitHandler = (values) => {
@@ -24,18 +25,18 @@ const PortSetting = () => {
   }
 
   return (
-    <WBForm form={form} onFinish={submitHandler}>
-      <Card
-        title={
-          <Typography.Title level={4} style={{ textAlign: 'center' }}>
-            Port Setting
-          </Typography.Title>
-        }
-        actions={[
-          <WBButton key="save" title="Save" htmlType="submit" />,
-          <WBButton key="cancel" title="Cancel" danger />
-        ]}
-      >
+    <Modal
+      open={open}
+      title={
+        <Typography.Title level={4} style={{ textAlign: 'center' }}>
+          Port
+        </Typography.Title>
+      }
+      footer={null}
+      closeIcon={false}
+    >
+      <WBDivider />
+      <WBForm form={form} onFinish={submitHandler}>
         <SelectInput
           name="baudrate"
           label="Baudrate"
@@ -76,9 +77,23 @@ const PortSetting = () => {
           options={comOptions}
           allowClear
         />
-      </Card>
-    </WBForm>
+        <WBDivider />
+        <Row justify="end" gutter={[8, 0]}>
+          <Col>
+            <WBButton key="cancel" title="Cancel" danger onClick={onCancel} />
+          </Col>
+          <Col>
+            <WBButton type="primary" key="save" title="Save" htmlType="submit" />
+          </Col>
+        </Row>
+      </WBForm>
+    </Modal>
   )
+}
+
+PortSetting.propTypes = {
+  open: PropTypes.bool,
+  onCancel: PropTypes.func
 }
 
 export default PortSetting
