@@ -38,9 +38,17 @@ export const api = {
     }
   },
 
+  // ETC
   closePort: (channel) => {
     const validChannels = ['close-port']
     if (validChannels.includes(channel)) ipcRenderer.send(channel)
+  },
+  readFingerprint: (channel) => {
+    console.log('channel', channel)
+    const validChannels = ['read-fingerprint']
+    if (validChannels.includes(channel)) {
+      return ipcRenderer.invoke(channel)
+    }
   },
   updateData: (channel, payload) => {
     const validChannels = ['update-data']

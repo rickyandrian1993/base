@@ -3,6 +3,7 @@ import { Card, Col, Row, Typography } from 'antd'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import Fingerprint from './_FingerprintSetting'
 import MillSetting from './_MillSetting'
 import PortSetting from './_PortSetting'
 
@@ -21,8 +22,16 @@ const Setting = () => {
       {modal.port.open && (
         <PortSetting open={modal.port.open} onCancel={() => modalHandler('port', false)} />
       )}
+
       {modal.mill.open && (
         <MillSetting open={modal.mill.open} onCancel={() => modalHandler('mill', false)} />
+      )}
+
+      {modal.fingerprint.open && (
+        <Fingerprint
+          open={modal.fingerprint.open}
+          onCancel={() => modalHandler('fingerprint', false)}
+        />
       )}
 
       <BackgroundImage />
@@ -41,23 +50,17 @@ const Setting = () => {
           style={{ maxHeight: 'calc(100% - (46px + 24px + 24px))', overflowY: 'auto' }}
         >
           <Col span={6}>
-            <WBButton
-              title="Port"
-              variant="outlined"
-              color="cyan"
-              onClick={() => modalHandler('port', true)}
-            />
+            <WBButton title="Port" variant="outlined" onClick={() => modalHandler('port', true)} />
+          </Col>
+          <Col span={6}>
+            <WBButton title="Mill" variant="outlined" onClick={() => modalHandler('mill', true)} />
           </Col>
           <Col span={6}>
             <WBButton
-              title="Mill"
+              title="Fingerprint"
               variant="outlined"
-              color="cyan"
-              onClick={() => modalHandler('mill', true)}
+              onClick={() => modalHandler('fingerprint', true)}
             />
-          </Col>
-          <Col span={6}>
-            <WBButton title="Fingerprint" variant="outlined" color="cyan" />
           </Col>
           <Col span={6}>
             <Link to="/login">

@@ -1,5 +1,6 @@
 import { ipcMain } from 'electron'
 import { mainWindow } from '..'
+import { fingerprintListener } from './handlers/fingerprint.listener'
 import { millListener } from './handlers/mill.listener'
 import { serialPortListener } from './handlers/serialPort'
 import { listenerServices } from './handlers/services'
@@ -11,8 +12,9 @@ export function ipcMainHandler() {
     console.log('Receive from React: ', data)
     mainWindow.webContents.send('message-from-main', 'Hello from Electron main process')
   })
-  ipcMain.on('close-port', serialPortListener.closePort)
   ipcMain.on('get-weigh', serialPortListener.getWeigh)
-  ipcMain.handle('update-data', sysconfigListener.updateData)
   ipcMain.handle('get-mill-server', millListener.getMillServer)
+  ipcMain.on('close-port', serialPortListener.closePort)
+  ipcMain.handle('read-fingerprint', fingerprintListener.readFingerprint)
+  ipcMain.handle('update-data', sysconfigListener.updateData)
 }

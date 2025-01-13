@@ -5,17 +5,11 @@ import {
   bitsOptions,
   comOptions,
   parityOptions,
-  stopBitOptions
+  stopBitOptions,
+  validator
 } from '@renderer/utils/constants'
 import { Col, Form, Modal, Row, Typography } from 'antd'
 import PropTypes from 'prop-types'
-
-const validator = {
-  require: {
-    required: true,
-    message: 'This field is required!'
-  }
-}
 
 const PortSetting = ({ open, onCancel }) => {
   const [form] = Form.useForm()

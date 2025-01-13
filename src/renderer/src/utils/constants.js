@@ -48,3 +48,10 @@ export const mainMenuType = [
   { value: 'Kalimantan', label: 'Kalimantan' },
   { value: 'Sumatera', label: 'Sumatera' }
 ]
+
+export const validator = {
+  require: {
+    required: true,
+    message: 'This field is required!'
+  }
+}

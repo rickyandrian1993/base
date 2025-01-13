@@ -8,16 +8,10 @@ import {
 } from '@ant-design/icons'
 import wideagri from '@renderer/assets/images/wide.png'
 import { TextInput } from '@renderer/components'
+import { validator } from '@renderer/utils/constants'
 import { Button, Card, Input, Typography } from 'antd'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
-const validator = {
-  require: {
-    required: true,
-    message: 'This field is required!'
-  }
-}
 
 const LoginForm = ({ form }) => {
   return (
