@@ -5,7 +5,6 @@ export const getStorage = (key) => {
     const data = typeof window !== 'undefined' ? localStorage.getItem(key) : null
 
     if (!key) return
-
     return data && decryptCrypto(data)
   } catch (error) {
     console.log('Error getting storage:', error)

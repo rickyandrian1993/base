@@ -1,7 +1,8 @@
 // import { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 // import { WBButton } from './components'
-import { Dashoard, Login, Setting } from './features'
+import { Login, Setting } from './features'
+import AppLayout from './layout'
 import ProtectedRoute from './routes/ProtectedRoute'
 
 function App() {
@@ -38,7 +39,6 @@ function App() {
   // const closePort = () => {
   //   window.api.closePort('close-port')
   // }
-
   return (
     <>
       {/* <span>{timbangan}</span>
@@ -69,7 +69,7 @@ function App() {
       <Routes>
         <Route path="login" element={<Login />} />
         <Route element={<ProtectedRoute />}>
-          <Route path="*" element={<Dashoard />} />
+          <Route path="*" element={<AppLayout />} />
         </Route>
         <Route path="/config">
           <Route index element={<Setting />} />

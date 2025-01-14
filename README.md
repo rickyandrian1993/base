@@ -32,3 +32,9 @@ $ npm run build:mac
 # For Linux
 $ npm run build:linux
 ```
+
+### Format End of Line
+
+```bash
+$ npm format
+```
