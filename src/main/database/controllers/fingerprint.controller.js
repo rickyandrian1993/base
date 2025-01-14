@@ -1,4 +1,5 @@
 import { endpoints } from '@main/constant/endpoints'
+import { logToFile } from '@main/logger'
 import axios from 'axios'
 
 const baseAPIJava = 'http://localhost:3337'
@@ -10,16 +11,13 @@ const FingerprintController = {
       .then((res) => {
         return res
       })
-      .catch((error) => console.log('error', error))
-    // let temp = null
-    // setTimeout(() => {
-    //   temp = {
-    //     code: '200',
-    //     message: 'Success read fingerprint',
-    //     data: 'kasdkjqoiweqkjlasdanmxcioisouq'
-    //   }
-    // }, 5000)
-    // return temp
+      .catch((error) => {
+        logToFile(`Error scan fingerprint: ${JSON.stringify(error)}`)
+        return {
+          code: '500',
+          message: 'Failed to get fingerprint data'
+        }
+      })
   }
 }
 

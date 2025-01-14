@@ -43,11 +43,10 @@ export const api = {
     const validChannels = ['close-port']
     if (validChannels.includes(channel)) ipcRenderer.send(channel)
   },
-  readFingerprint: (channel) => {
-    console.log('channel', channel)
+  readFingerprint: async (channel) => {
     const validChannels = ['read-fingerprint']
     if (validChannels.includes(channel)) {
-      return ipcRenderer.invoke(channel)
+      return await ipcRenderer.invoke(channel)
     }
   },
   updateData: (channel, payload) => {

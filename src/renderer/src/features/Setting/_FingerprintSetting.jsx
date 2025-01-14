@@ -132,8 +132,7 @@ const Fingerprint = ({ open, onCancel }) => {
                         icon={<PlusOutlined />}
                         onClick={async () => {
                           getRequest('readFingerprint', setLoading, {}, (response) => {
-                            console.log('data', response)
-                            add(response?.data)
+                            if (response) add(response?.data)
                           })
                         }}
                       >
