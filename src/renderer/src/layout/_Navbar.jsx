@@ -24,6 +24,7 @@ export default function Navbar() {
         <span> Weight Bridge System</span>
       </div>
       <nav className="nav-links">{generateLink(MenuList)}</nav>
+      <nav className="nav-profile"></nav>
     </NavBox>
   )
 }
@@ -34,12 +35,12 @@ const NavBox = styled.div`
   width: 100vw;
   padding-inline: 20px;
   display: flex;
-  gap: 80px;
+  justify-content: space-between;
   .nav {
     &-logo {
       color: var(--primary-color);
       display: flex;
-      border-radius: 8px;
+      border-radius: 4px;
       gap: 4px;
       align-items: ce;
       padding-block: 8px;

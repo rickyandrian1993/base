@@ -75,8 +75,7 @@ const Setting = () => {
 
 const StyledCard = styled(Card)`
   width: calc(100% - 24px);
-  height: calc(100vh - 24px);
-  overflow-y: hidden;
+  max-height: calc(100vh - 24px);
   .ant-card-body {
     height: inherit;
   }

@@ -1,14 +1,32 @@
-import { Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
+import { WBForm } from '@renderer/components'
+import Section from '@renderer/components/Section'
+import { Form } from 'antd'
+import styled from 'styled-components'
+import LeftForm from './_LeftForm'
 
 const Dashboard = () => {
-  const nav = useNavigate()
+  const [form] = Form.useForm()
+
   return (
-    <div>
-      <h1>Dashboard</h1>
-      <Button onClick={() => nav('/report')}>To Report</Button>
-    </div>
+    <PageSpace>
+      <Section size="sm" bg>
+        <LeftForm form={form} />
+      </Section>
+      <Section size="md" bg>
+        <h3>Dahsboard 2/3</h3>
+        <h3>Dahsboard 2/3</h3>
+        <h3>Dahsboard 2/3</h3>
+      </Section>
+    </PageSpace>
   )
 }
+
+const PageSpace = styled(WBForm)`
+  display: flex;
+  width: calc(100vw - 36px);
+  height: 100;
+  flex-wrap: wrap;
+  gap: 8px;
+`
 
 export default Dashboard
