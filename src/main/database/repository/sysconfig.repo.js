@@ -21,7 +21,10 @@ const SysConfigRepository = {
   },
 
   async update(payload) {
-    return await SystemConfig.update(payload, { where: { id: payload.id } })
+    await SystemConfig.update({ config: payload.config }, { where: { id: payload.id } })
+
+    return this.findOne()
   }
 }
+
 export default SysConfigRepository

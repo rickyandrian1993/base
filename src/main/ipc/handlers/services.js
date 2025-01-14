@@ -7,6 +7,7 @@ export const listenerServices = {
 
   // System Config
   getSystemConfig: async () => await SysConfigController.getSystemConfig(),
+  updateSystemConfig: async (_, payload) => await SysConfigController.updateSysConfig(payload),
 
   // Validation
   validatePassword: async (_, payload) => await ValidationController.validatePassword(payload)

@@ -9,6 +9,7 @@ import {
   stopBitOptions,
   validator
 } from '@renderer/utils/constants'
+import { objToFormValue } from '@renderer/utils/globalUtility'
 import { Col, Form, Modal, Row, Spin, Typography } from 'antd'
 import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
@@ -16,14 +17,25 @@ import { useEffect, useState } from 'react'
 const PortSetting = ({ open, onCancel }) => {
   const [form] = Form.useForm()
   const [loading, setLoading] = useState(false)
+  const [data, setData] = useState(null)
 
   const submitHandler = (values) => {
-    console.log('values', values)
+    const payload = {
+      ...data,
+      config: {
+        ...data?.config,
+        port_setting: values
+      }
+    }
+
+    electronRequest('updateSystemConfig', setLoading, payload, (res) => {
+      if (res.code === 200) onCancel()
+    })
   }
 
   useEffect(() => {
     electronRequest('getSystemConfig', setLoading, {}, (res) => {
-      console.log('res', res)
+      if (res?.data) setData({ ...res.data, config: JSON.parse(res.data.config) })
     })
   }, [])
 
@@ -40,7 +52,11 @@ const PortSetting = ({ open, onCancel }) => {
     >
       <WBDivider />
       <Spin spinning={loading}>
-        <WBForm form={form} onFinish={submitHandler}>
+        <WBForm
+          form={form}
+          onFinish={submitHandler}
+          fields={objToFormValue(data?.config?.port_setting)}
+        >
           <SelectInput
             name="baudrate"
             label="Baudrate"

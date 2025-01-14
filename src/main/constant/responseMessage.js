@@ -1,6 +1,6 @@
 export const successResponse = {
   code: 200,
-  message: 'Success electron request'
+  message: 'Request success'
 }
 
 export const errorResponse = {
