@@ -53,57 +53,8 @@ app.whenReady().then(async () => {
   app.on('browser-window-created', (_, window) => {
     optimizer.watchWindowShortcuts(window)
   })
+
   ipcMainHandler()
-
-  // IPC test
-  // ipcMain.on(
-  //   'ping',
-  //   async () => await UserController.createUser({ username: 'asd', email: 'asd@mail.com' })
-  // )
-
-  // ipcMain.on('message-from-react', (event, data) => {
-  //   console.log('Receive from React: ', data)
-
-  //   mainWindow.webContents.send('message-from-main', 'Hello from Electron main process')
-  // })
-
-  // Read serialport data
-  // ipcMain.on('read-weigh', async (event, options) => {
-  //   try {
-  //     if (!port) {
-  //       port = new SerialPort({
-  //         baudRate: Number(options.baudRate),
-  //         dataBits: options.dataBits,
-  //         stopBits: options.stopBits,
-  //         parity: options.parity,
-  //         path: options.com
-  //       })
-
-  //       port.on('open', () => console.log('Port Opened: ', options.com))
-  //     }
-
-  //     const parser = port.pipe(new ReadlineParser({ delimiter: '\r\n' }))
-
-  //     parser.on('data', (data) => {
-  //       console.log('serial data: ', data)
-  //       mainWindow.webContents.send('weigh-data', data)
-  //     })
-  //   } catch (error) {
-  //     console.log('Error: ', error)
-  //   }
-  // })
-
-  // ipcMain.on('close-port', async () => {
-  //   try {
-  //     await port.close(() => {
-  //       console.log('Port Close')
-  //       port = null
-  //       // port.on('error', (err) => ) // return error to client
-  //     })
-  //   } catch (error) {
-  //     console.log('Error close port: ', error)
-  //   }
-  // })
 
   createWindow()
 

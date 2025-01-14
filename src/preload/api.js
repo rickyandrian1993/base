@@ -54,5 +54,11 @@ export const api = {
     if (validChannels.includes(channel)) {
       return ipcRenderer.invoke(channel, payload)
     }
+  },
+  validatePassword: async (channel, payload) => {
+    const validChannels = ['validate-password']
+    if (validChannels.includes(channel)) {
+      return await ipcRenderer.invoke(channel, payload)
+    }
   }
 }

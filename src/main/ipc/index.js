@@ -17,4 +17,6 @@ export function ipcMainHandler() {
   ipcMain.on('close-port', serialPortListener.closePort)
   ipcMain.handle('read-fingerprint', fingerprintListener.readFingerprint)
   ipcMain.handle('update-data', sysconfigListener.updateData)
+
+  ipcMain.handle('validate-password', listenerServices.validatePassword)
 }

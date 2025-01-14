@@ -1,7 +1,7 @@
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons'
 import { WBButton, WBDivider, WBForm } from '@renderer/components'
 import { SelectInput } from '@renderer/components/Input'
-import { getRequest } from '@renderer/services/electronCommunication'
+import { electronRequest } from '@renderer/services/electronCommunication'
 import { comOptions, validator } from '@renderer/utils/constants'
 import { Button, Col, Form, Input, Modal, Row, Spin, Table, Typography } from 'antd'
 import PropTypes from 'prop-types'
@@ -131,7 +131,7 @@ const Fingerprint = ({ open, onCancel }) => {
                         type="dashed"
                         icon={<PlusOutlined />}
                         onClick={async () => {
-                          getRequest('readFingerprint', setLoading, {}, (response) => {
+                          electronRequest('readFingerprint', setLoading, {}, (response) => {
                             if (response) add(response?.data)
                           })
                         }}

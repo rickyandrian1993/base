@@ -10,7 +10,7 @@ const MillController = {
         .then(async ({ data }) => {
           if (data.isError === true || data.isError === 'Y') {
             return {
-              code: '500',
+              code: 500,
               message: 'Failed to get token from server'
             }
           } else {
@@ -25,7 +25,7 @@ const MillController = {
               .post(endpoints.get_mill_list, payload)
               .then(({ data }) => {
                 return {
-                  code: '200',
+                  code: 200,
                   message: 'Success get mill from server',
                   data: {
                     server_response: data,
@@ -36,7 +36,7 @@ const MillController = {
               .catch((error) => {
                 logToFile(`Error getAllMillNoSt: ${JSON.stringify(error)}`)
                 return {
-                  code: '500',
+                  code: 500,
                   message: 'Failed to get mill server'
                 }
               })
@@ -45,15 +45,15 @@ const MillController = {
         .catch((error) => {
           logToFile(`Error auth/token-request: ${error}`)
           return {
-            code: '500',
+            code: 500,
             message: 'Failed to get mill server'
           }
         })
     } catch (error) {
       logToFile(`Error getMillServer: ${error}`)
       return {
-        code: '500',
-        message: 'Failed to get mill server'
+        code: 500,
+        message: 'Internal Server Error'
       }
     }
   }

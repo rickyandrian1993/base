@@ -1,6 +1,6 @@
 import { TextInput, WBButton, WBDivider, WBForm } from '@renderer/components'
 import { SelectInput } from '@renderer/components/Input'
-import { getRequest } from '@renderer/services/electronCommunication'
+import { electronRequest } from '@renderer/services/electronCommunication'
 import { mainMenuType, validator } from '@renderer/utils/constants'
 import { Col, Form, Modal, Row, Spin, Typography } from 'antd'
 import PropTypes from 'prop-types'
@@ -17,7 +17,7 @@ const MillSetting = ({ open, onCancel }) => {
   }
 
   useEffect(() => {
-    getRequest('getMillServer', setLoading, {}, (res) => {
+    electronRequest('getMillServer', setLoading, {}, (res) => {
       console.log('res', res)
       setMillOptions([
         { value: 'mill1', label: 'Mill A' },
