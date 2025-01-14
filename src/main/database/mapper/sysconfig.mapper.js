@@ -4,6 +4,9 @@ import SysConfigDto from '../dto/sysconfig.dto'
 const SysConfigMapper = {
   toDto(sysconfig) {
     return new SysConfigDto(sysconfig)
+  },
+  toDtoList(sysconfigs) {
+    return sysconfigs.map((sysconfig) => new SysConfigDto(sysconfig))
   }
 }
 

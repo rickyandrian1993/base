@@ -1,5 +1,6 @@
 export const channelElectron = {
   getMillServer: 'get-mill-server',
-  validatePassword: 'validate-password',
-  readFingerprint: 'read-fingerprint'
+  getSystemConfig: 'get-system-config',
+  readFingerprint: 'read-fingerprint',
+  validatePassword: 'validate-password'
 }

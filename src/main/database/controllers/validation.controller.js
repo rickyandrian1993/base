@@ -1,3 +1,4 @@
+import { errorResponse, successResponse } from '@main/constant/responseMessage'
 import { logToFile } from '@main/logger'
 
 const pass = import.meta.env.VITE_PASS
@@ -7,26 +8,20 @@ const ValidationController = {
     try {
       if (!pass)
         return {
-          code: 500,
+          ...errorResponse,
           message: 'Failed to get password default'
         }
 
       if (pass !== payload.password)
         return {
-          code: 500,
+          ...errorResponse,
           message: 'Incorrect admin password'
         }
 
-      return {
-        code: 200,
-        message: ''
-      }
+      return successResponse
     } catch (error) {
       logToFile(`Error validate password: ${JSON.stringify(error)}`)
-      return {
-        code: 500,
-        message: 'Internal Server Error'
-      }
+      return errorResponse
     }
   }
 }

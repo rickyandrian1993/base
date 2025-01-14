@@ -13,10 +13,16 @@ export function ipcMainHandler() {
     mainWindow.webContents.send('message-from-main', 'Hello from Electron main process')
   })
   ipcMain.on('get-weigh', serialPortListener.getWeigh)
-  ipcMain.handle('get-mill-server', millListener.getMillServer)
   ipcMain.on('close-port', serialPortListener.closePort)
   ipcMain.handle('read-fingerprint', fingerprintListener.readFingerprint)
   ipcMain.handle('update-data', sysconfigListener.updateData)
 
+  // GET
+  ipcMain.handle('get-mill-server', millListener.getMillServer)
+  ipcMain.handle('get-system-config', listenerServices.getSystemConfig)
+
+  // SET
+
+  // ETC
   ipcMain.handle('validate-password', listenerServices.validatePassword)
 }

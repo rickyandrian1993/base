@@ -9,6 +9,10 @@ export const api = {
       return ipcRenderer.invoke(channel)
     }
   },
+  getSystemConfig: async (channel) => {
+    const validChannels = ['get-system-config']
+    if (validChannels.includes(channel)) return await ipcRenderer.invoke(channel)
+  },
   getWeigh: (channel, data) => {
     const validChannels = ['get-weigh']
     if (validChannels.includes(channel)) {
@@ -45,20 +49,14 @@ export const api = {
   },
   readFingerprint: async (channel) => {
     const validChannels = ['read-fingerprint']
-    if (validChannels.includes(channel)) {
-      return await ipcRenderer.invoke(channel)
-    }
+    if (validChannels.includes(channel)) return await ipcRenderer.invoke(channel)
   },
   updateData: (channel, payload) => {
     const validChannels = ['update-data']
-    if (validChannels.includes(channel)) {
-      return ipcRenderer.invoke(channel, payload)
-    }
+    if (validChannels.includes(channel)) return ipcRenderer.invoke(channel, payload)
   },
   validatePassword: async (channel, payload) => {
     const validChannels = ['validate-password']
-    if (validChannels.includes(channel)) {
-      return await ipcRenderer.invoke(channel, payload)
-    }
+    if (validChannels.includes(channel)) return await ipcRenderer.invoke(channel, payload)
   }
 }
