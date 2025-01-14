@@ -22,3 +22,17 @@ export const setStorage = (key, data) => {
 export const removeStorage = (key) => window.localStorage.removeItem(key)
 
 export const clearStorage = () => window.localStorage.clear()
+
+export const objToFormValue = (data) => {
+  let initial = []
+  if (data) {
+    Object.keys(data).forEach((key) => {
+      const obj = {
+        name: key,
+        value: data[key]
+      }
+      initial.push(obj)
+    })
+  }
+  return initial
+}

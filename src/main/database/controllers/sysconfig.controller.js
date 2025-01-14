@@ -22,7 +22,7 @@ const SysConfigController = {
         data: result
       }
     } catch (error) {
-      logToFile(`Error getSystemConfig: ${error}`)
+      logToFile(`Error getSystemConfig Controller: ${error}`)
       return errorResponse
     }
   },
@@ -30,22 +30,25 @@ const SysConfigController = {
   async updateSysConfig(payload) {
     try {
       const sysconfig = new SysConfigDto(payload)
-
       if (sysconfig.id) {
         const res = await SysConfigRepository.update(sysconfig)
 
-        return SysConfigMapper.toDto(res)
+        return {
+          ...successResponse,
+          message: 'Success update system config',
+          data: SysConfigMapper.toDto(res[0])
+        }
       } else {
         const res = await SysConfigRepository.create(sysconfig)
 
         return {
           code: 200,
-          message: 'Success created data',
+          message: 'Success create system config',
           data: SysConfigMapper.toDto(res.dataValues)
         }
       }
     } catch (error) {
-      logToFile(`Error System Config Controller: ${error}`)
+      logToFile(`Error updateSysConfig Controller: ${error}`)
       return errorResponse
     }
   }

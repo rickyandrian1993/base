@@ -51,8 +51,8 @@ export const api = {
     const validChannels = ['read-fingerprint']
     if (validChannels.includes(channel)) return await ipcRenderer.invoke(channel)
   },
-  updateData: (channel, payload) => {
-    const validChannels = ['update-data']
+  updateSystemConfig: (channel, payload) => {
+    const validChannels = ['update-system-config']
     if (validChannels.includes(channel)) return ipcRenderer.invoke(channel, payload)
   },
   validatePassword: async (channel, payload) => {

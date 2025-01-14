@@ -17,12 +17,9 @@ export function ipcMainHandler() {
   ipcMain.handle('read-fingerprint', fingerprintListener.readFingerprint)
   ipcMain.handle('update-data', sysconfigListener.updateData)
 
-  // GET
   ipcMain.handle('get-mill-server', millListener.getMillServer)
   ipcMain.handle('get-system-config', listenerServices.getSystemConfig)
 
-  // SET
-
-  // ETC
+  ipcMain.handle('update-system-config', listenerServices.updateSystemConfig)
   ipcMain.handle('validate-password', listenerServices.validatePassword)
 }
