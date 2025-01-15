@@ -21,13 +21,13 @@ function RATForm({ children, ...rest }) {
 
 const StyledForm = styled(Form)`
   width: 100%;
-  .ant-flex {
+  /* .ant-flex {
     gap: 8px;
-  }
+  } */
   .ant-form-item {
-    display: flex;
+    /* display: flex;
     flex: 1 1 calc(50% - 16px);
-    gap: 4px;
+    gap: 4px; */
     margin-block: 16px;
     &-required {
       &::before {
