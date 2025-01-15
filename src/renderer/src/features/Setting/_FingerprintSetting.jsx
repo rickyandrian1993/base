@@ -88,7 +88,18 @@ const Fingerprint = ({ open, onCancel }) => {
             options={comOptions}
             allowClear
           />
-          <Form.List name="fingerprints">
+          <Form.List
+            name="fingerprints"
+            rules={[
+              {
+                validator: async (_, fingerprints) => {
+                  if (!fingerprints || fingerprints.length < 1) {
+                    return Promise.reject(new Error('At least 1 fingerprint'))
+                  }
+                }
+              }
+            ]}
+          >
             {(fields, { add, remove }, { errors }) => {
               return (
                 <>
@@ -107,7 +118,7 @@ const Fingerprint = ({ open, onCancel }) => {
                         ]}
                         noStyle
                       >
-                        <Input placeholder="passenger name" />
+                        <Input placeholder="Data fingerprint" disabled />
                       </Form.Item>
                       {fields.length > 1 ? (
                         <MinusCircleOutlined
@@ -132,13 +143,12 @@ const Fingerprint = ({ open, onCancel }) => {
                         icon={<PlusOutlined />}
                         onClick={async () => {
                           electronRequest('scanFingerprint', setLoading, {}, (response) => {
-                            console.log('response', response)
                             if (response.code === '200' || response.code === 200)
                               add(response?.data)
                           })
                         }}
                       >
-                        Add field
+                        Add fingerprint
                       </Button>
                       <Form.ErrorList errors={errors} />
                     </Form.Item>
