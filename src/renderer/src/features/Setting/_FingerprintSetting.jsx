@@ -131,8 +131,10 @@ const Fingerprint = ({ open, onCancel }) => {
                         type="dashed"
                         icon={<PlusOutlined />}
                         onClick={async () => {
-                          electronRequest('readFingerprint', setLoading, {}, (response) => {
-                            if (response) add(response?.data)
+                          electronRequest('scanFingerprint', setLoading, {}, (response) => {
+                            console.log('response', response)
+                            if (response.code === '200' || response.code === 200)
+                              add(response?.data)
                           })
                         }}
                       >

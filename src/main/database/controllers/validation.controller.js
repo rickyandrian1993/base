@@ -6,17 +6,17 @@ const pass = import.meta.env.VITE_PASS
 const ValidationController = {
   async validatePassword(payload) {
     try {
-      if (!pass)
-        return {
-          ...errorResponse,
-          message: 'Failed to get password default'
-        }
+      // if (!pass)
+      //   return {
+      //     ...errorResponse,
+      //     message: 'Failed to get password default'
+      //   }
 
-      if (pass !== payload.password)
-        return {
-          ...errorResponse,
-          message: 'Incorrect admin password'
-        }
+      // if (pass !== payload.password)
+      //   return {
+      //     ...errorResponse,
+      //     message: 'Incorrect admin password'
+      //   }
 
       return successResponse
     } catch (error) {

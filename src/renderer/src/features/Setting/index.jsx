@@ -63,6 +63,9 @@ const Setting = () => {
             />
           </Col>
           <Col span={6}>
+            <WBButton title="Editor" variant="outlined" />
+          </Col>
+          <Col span={6}>
             <Link to="/login">
               <WBButton danger title="Back" />
             </Link>

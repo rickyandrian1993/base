@@ -1,6 +1,5 @@
 import { ipcMain } from 'electron'
 import { mainWindow } from '..'
-import { fingerprintListener } from './handlers/fingerprint.listener'
 import { millListener } from './handlers/mill.listener'
 import { serialPortListener } from './handlers/serialPort'
 import { listenerServices } from './handlers/services'
@@ -14,12 +13,11 @@ export function ipcMainHandler() {
   })
   ipcMain.on('get-weigh', serialPortListener.getWeigh)
   ipcMain.on('close-port', serialPortListener.closePort)
-  ipcMain.handle('read-fingerprint', fingerprintListener.readFingerprint)
   ipcMain.handle('update-data', sysconfigListener.updateData)
 
   ipcMain.handle('get-mill-server', millListener.getMillServer)
   ipcMain.handle('get-system-config', listenerServices.getSystemConfig)
-
+  ipcMain.handle('scan-fingerprint', listenerServices.scanFingerprint)
   ipcMain.handle('update-system-config', listenerServices.updateSystemConfig)
   ipcMain.handle('validate-password', listenerServices.validatePassword)
 }

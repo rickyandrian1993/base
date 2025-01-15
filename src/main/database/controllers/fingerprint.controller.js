@@ -5,10 +5,11 @@ import axios from 'axios'
 const baseAPIJava = 'http://localhost:3337'
 
 const FingerprintController = {
-  async readFingerprint() {
+  async scanFingerprint() {
     return await axios
       .post(`${baseAPIJava}/${endpoints.authFinger}`)
       .then((res) => {
+        console.log('res', res)
         return res
       })
       .catch((error) => {

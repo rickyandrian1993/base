@@ -47,13 +47,13 @@ export const api = {
     const validChannels = ['close-port']
     if (validChannels.includes(channel)) ipcRenderer.send(channel)
   },
-  readFingerprint: async (channel) => {
-    const validChannels = ['read-fingerprint']
+  scanFingerprint: async (channel) => {
+    const validChannels = ['scan-fingerprint']
     if (validChannels.includes(channel)) return await ipcRenderer.invoke(channel)
   },
-  updateSystemConfig: (channel, payload) => {
+  updateSystemConfig: async (channel, payload) => {
     const validChannels = ['update-system-config']
-    if (validChannels.includes(channel)) return ipcRenderer.invoke(channel, payload)
+    if (validChannels.includes(channel)) return await ipcRenderer.invoke(channel, payload)
   },
   validatePassword: async (channel, payload) => {
     const validChannels = ['validate-password']
