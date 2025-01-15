@@ -1,9 +1,7 @@
 import { ipcMain } from 'electron'
 import { mainWindow } from '..'
-import { millListener } from './handlers/mill.listener'
 import { serialPortListener } from './handlers/serialPort'
 import { listenerServices } from './handlers/services'
-import { sysconfigListener } from './handlers/sysconfig.listener'
 
 export function ipcMainHandler() {
   ipcMain.on('ping', listenerServices.getDataUser)
@@ -13,9 +11,8 @@ export function ipcMainHandler() {
   })
   ipcMain.on('get-weigh', serialPortListener.getWeigh)
   ipcMain.on('close-port', serialPortListener.closePort)
-  ipcMain.handle('update-data', sysconfigListener.updateData)
 
-  ipcMain.handle('get-mill-server', millListener.getMillServer)
+  ipcMain.handle('get-mill-server', listenerServices.getMillServer)
   ipcMain.handle('get-system-config', listenerServices.getSystemConfig)
   ipcMain.handle('scan-fingerprint', listenerServices.scanFingerprint)
   ipcMain.handle('update-system-config', listenerServices.updateSystemConfig)

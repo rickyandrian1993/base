@@ -10,7 +10,6 @@ const MillSetting = ({ open, onCancel }) => {
   const [form] = Form.useForm()
   const [millOptions, setMillOptions] = useState([])
   const [loading, setLoading] = useState(false)
-  console.log('loading', loading)
 
   const submitHandler = (values) => {
     console.log('values', values)

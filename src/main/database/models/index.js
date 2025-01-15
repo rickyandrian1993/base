@@ -1,12 +1,10 @@
-import SerialPort from './serialport'
 import ServiceCenter from './servicecenter'
-import SystemConfig from './SystemConfig'
+import SystemConfig from './systemConfig'
 import User from './user'
 
 const models = {
   User,
   ServiceCenter,
-  SerialPort,
   SystemConfig
 }
 

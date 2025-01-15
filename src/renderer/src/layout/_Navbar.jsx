@@ -42,7 +42,7 @@ const NavBox = styled.div`
       display: flex;
       border-radius: 4px;
       gap: 4px;
-      align-items: ce;
+      align-items: center;
       padding-block: 8px;
       padding-inline: 8px;
       margin-block: 4px;
