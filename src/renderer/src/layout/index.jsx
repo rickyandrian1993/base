@@ -15,7 +15,7 @@ function AppLayout() {
 }
 
 const Content = styled.div`
-  max-height: calc(100vh - 50px);
+  height: calc(100vh - 50px);
   max-width: calc(100vw - 40px);
   margin: 8px 20px;
 `

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-function Section({ size, bg = false, children }) {
+function FormSection({ size, bg = false, children }) {
   return (
     <StyledSection size={size} bg={bg}>
       {children}
@@ -11,21 +11,52 @@ function Section({ size, bg = false, children }) {
 
 const StyledSection = styled.div`
   display: flex;
-  max-height: calc(100vh - 66px);
   overflow-y: auto;
-  background-color: ${({ bg }) => {
-    console.log('bg', bg)
-    if (bg) return `var(--primary-color-20)`
-  }};
-  border: 1px solid var(--primary-color-50);
-  border-radius: 4px;
-  padding: 8px;
+  flex-wrap: wrap;
+  width: 100%;
+  max-height: calc(100vh - 66px);
+  overflow-y: scroll;
   flex: ${({ size }) => {
-    if (size === 'sm') return '1 1 33%'
-    if (size === 'md') return '5 1 66%'
+    if (size === 'sm') return '1 1 40%'
+    if (size === 'md') return '5 1 60%'
     return '1 1 100%'
   }};
-  flex-wrap: wrap;
+  max-width: ${({ size }) => {
+    if (size === 'sm') return 'calc(40% - 4px)'
+    if (size === 'md') return 'calc(60% - 4px)'
+    return 'calc(100 - 4px%)'
+  }};
+  
+  
+  & > *{
+    background-color: ${({ bg }) => {
+      console.log('bg', bg)
+      if (bg) return `var(--primary-color-20)`
+    }};
+    border: 1px solid var(--primary-color-50);
+    padding-inline: 8px;
+    margin-block: 4px;
+    border-radius: 4px;
+  }
+
+  .ant-flex {
+    gap: 0px 8px;
+    width: 100%;
+  }
+
+  .ant-form-item {
+    display: flex;
+    margin-block: 14px 8px;
+    flex: 1 1 calc(50% - 16px);
+    &:nth-child(odd){
+      &:last-child:not(:nth-child(odd)) {
+      flex: 1 1 calc(100% - 16px);
+    }
+  }
+    .ant-row {
+      width: 100%;
+    }
+  }}
 `
 
 // Size Guide
@@ -33,10 +64,10 @@ const StyledSection = styled.div`
 // md= 2 / 3
 // full= fullwidth
 
-Section.propTypes = {
+FormSection.propTypes = {
   bg: PropTypes.bool,
   size: PropTypes.oneOf(['sm', 'md', 'full']),
   children: PropTypes.node.isRequired
 }
 
-export default Section
+export default FormSection

@@ -5,9 +5,9 @@ const TextInput = ({ name, label, rules = [], placeholder, hidden, ...rest }) =>
   return (
     <Form.Item name={name} label={label} rules={rules} hidden={hidden}>
       {name === 'password' || name === 'confirm_password' ? (
-        <Input.Password placeholder={placeholder} allowClear {...rest} />
+        <Input.Password placeholder={placeholder ?? `Please Input ${label}`} allowClear {...rest} />
       ) : (
-        <Input name={name} placeholder={placeholder} {...rest} />
+        <Input name={name} placeholder={placeholder ?? `Please Input ${label}`} {...rest} />
       )}
     </Form.Item>
   )
