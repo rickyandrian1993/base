@@ -1,6 +1,12 @@
-import { SettingOutlined, SlidersOutlined, SyncOutlined } from '@ant-design/icons'
+import {
+  ApiOutlined,
+  CloseOutlined,
+  SettingOutlined,
+  SlidersOutlined,
+  SyncOutlined
+} from '@ant-design/icons'
 import { FloatButton } from 'antd'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import ValidatePassword from './_ValidatePassword'
 
@@ -21,31 +27,32 @@ const FloatingButtonGroup = () => {
   //   console.log('res', res)
   // }
 
-  // const getWeigh = () => {
-  //   const options = {
-  //     baudRate: 9600,
-  //     dataBits: 8,
-  //     stopBits: 1,
-  //     parity: 'None',
-  //     com: 'COM6'
-  //   }
-  //   window.api.getWeigh('get-weigh', options)
-  // }
+  const getWeight = () => {
+    // electronRequest(
+    //   'getWeight',
+    //   (loading) => console.log('loading', loading),
+    //   {},
+    //   (res) => console.log('res', res)
+    // )
+    window.api.getWeight('get-weight')
+  }
 
-  // const closePort = () => window.api.closePort('close-port')
+  const closePort = () => window.api.closePort('close-port')
 
   const navigateHandler = () => {
     setOpen(false)
     navigate('/config')
   }
 
-  // useEffect(() => {
-  //   window.api.setWeigh('set-weigh', (data) => console.log('data', data))
+  useEffect(() => {
+    window.api.onMessage('message-from-main', (data) => console.log('data', data))
+    window.api.setWeight('set-weight', (data) => console.log('data', data))
 
-  //   return () => {
-  //     window.api.setWeigh(() => {})
-  //   }
-  // }, [])
+    return () => {
+      window.api.onMessage(() => {})
+      window.api.setWeight(() => {})
+    }
+  }, [])
 
   return (
     <>
@@ -61,6 +68,12 @@ const FloatingButtonGroup = () => {
         icon={<SettingOutlined />}
         tooltip={<span>Setting</span>}
       >
+        <FloatButton
+          icon={<CloseOutlined />}
+          tooltip={<span>Close Port</span>}
+          onClick={closePort}
+        />
+        <FloatButton icon={<ApiOutlined />} tooltip={<span>Get Weigh</span>} onClick={getWeight} />
         <FloatButton
           icon={<SyncOutlined />}
           tooltip={<span>Update Data</span>}

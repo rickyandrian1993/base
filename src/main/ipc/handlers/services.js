@@ -11,6 +11,7 @@ export const listenerServices = {
   getMillServer: async () => await MillController.getMillServer(),
   getSystemConfig: async () => await SysConfigController.getSystemConfig(),
   getWeight: async () => await SerialPortController.getWeight(),
+  login: async (_, payload) => await UserController.login(payload),
   scanFingerprint: async () => await FingerprintController.scanFingerprint(),
   updateSystemConfig: async (_, payload) => await SysConfigController.updateSysConfig(payload),
   validatePassword: async (_, payload) => await ValidationController.validatePassword(payload)

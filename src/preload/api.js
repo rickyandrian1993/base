@@ -29,6 +29,10 @@ export const api = {
     const validChannels = ['get-weight']
     if (validChannels.includes(channel)) return ipcRenderer.send(channel)
   },
+  login: async (channel, payload) => {
+    const validChannels = ['login']
+    if (validChannels.includes(channel)) return await ipcRenderer.invoke(channel, payload)
+  },
   onDownloadProgress: (channel, callback) => {
     const validChannels = ['on-download-progress']
     if (validChannels.includes(channel))

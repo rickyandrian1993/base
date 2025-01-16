@@ -1,7 +1,18 @@
+import { successResponse } from '@main/constant/responseMessage'
+import { logToFile } from '@main/logger'
 import UserMapper from '../mapper/userMapper'
 import UserRepository from '../repository/userRepository'
 
 const UserController = {
+  async login(payload) {
+    try {
+      console.log('payload', payload)
+      return successResponse
+    } catch (error) {
+      logToFile(`Error login controller: ${error}`)
+    }
+  },
+
   async getAllUsers() {
     const users = await UserRepository.findAll()
     return UserMapper.toDtoList(users)
