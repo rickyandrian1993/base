@@ -2,28 +2,14 @@ import { ipcRenderer } from 'electron'
 
 // Custom APIs for renderer
 export const api = {
-  getWeigh: (channel, data) => {
-    const validChannels = ['get-weigh']
-    if (validChannels.includes(channel)) {
-      return ipcRenderer.send(channel, data)
-    }
-  },
   onMessage: (channel, callback) => {
     const validChannels = ['message-from-main']
-    if (validChannels.includes(channel)) {
-      ipcRenderer.on(channel, (event, ...args) => callback(...args))
-    }
+    if (validChannels.includes(channel)) ipcRenderer.on(channel, (_, ...args) => callback(...args))
   },
   sendMessage: (channel, data) => {
     const validChannels = ['message-from-react']
     if (validChannels.includes(channel)) {
       ipcRenderer.send(channel, data)
-    }
-  },
-  setWeigh: (channel, callback) => {
-    const validChannels = ['set-weigh']
-    if (validChannels.includes(channel)) {
-      ipcRenderer.on(channel, (event, ...args) => callback(...args))
     }
   },
 
@@ -39,9 +25,22 @@ export const api = {
     const validChannels = ['get-system-config']
     if (validChannels.includes(channel)) return await ipcRenderer.invoke(channel)
   },
+  getWeight: (channel) => {
+    const validChannels = ['get-weight']
+    if (validChannels.includes(channel)) return ipcRenderer.send(channel)
+  },
+  onDownloadProgress: (channel, callback) => {
+    const validChannels = ['on-download-progress']
+    if (validChannels.includes(channel))
+      return ipcRenderer.on(channel, (_, ...args) => callback(...args))
+  },
   scanFingerprint: async (channel) => {
     const validChannels = ['scan-fingerprint']
     if (validChannels.includes(channel)) return await ipcRenderer.invoke(channel)
+  },
+  setWeight: (channel, callback) => {
+    const validChannels = ['set-weight']
+    if (validChannels.includes(channel)) ipcRenderer.on(channel, (_, ...args) => callback(...args))
   },
   updateSystemConfig: async (channel, payload) => {
     const validChannels = ['update-system-config']

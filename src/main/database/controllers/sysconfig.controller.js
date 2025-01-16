@@ -15,11 +15,9 @@ const SysConfigController = {
           message: 'No data available'
         }
 
-      const result = SysConfigMapper.toDto(res[0])
-
       return {
         ...successResponse,
-        data: result
+        data: SysConfigMapper.toDto(res[0])
       }
     } catch (error) {
       logToFile(`Error getSystemConfig Controller: ${error}`)

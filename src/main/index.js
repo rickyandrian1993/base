@@ -1,5 +1,6 @@
 import { electronApp, is, optimizer } from '@electron-toolkit/utils'
-import { app, BrowserWindow, shell } from 'electron'
+import { app, BrowserWindow, dialog, shell } from 'electron'
+import { autoUpdater } from 'electron-updater'
 import { join } from 'path'
 import icon from '../../wb.ico'
 import { initConnection } from './database/connection'
@@ -29,6 +30,25 @@ function createWindow() {
     shell.openExternal(details.url)
     return { action: 'deny' }
   })
+
+  // Auto update electron application
+  autoUpdater.on('update-available', (_event, releaseNotes, releaseName) => {
+    const dialogOpts = {
+      type: 'info',
+      buttons: ['Ok'],
+      title: `Update Available`,
+      message: process.platform === 'win32' ? releaseNotes : releaseName,
+      detail: `A new version download started.`
+    }
+
+    dialog.showMessageBox(dialogOpts)
+  })
+
+  autoUpdater.on('download-progress', (progressObj) =>
+    mainWindow.webContents.send('download-progress', progressObj.percent)
+  )
+
+  autoUpdater.on('update-downloaded', () => autoUpdater.quitAndInstall())
 
   // HMR for renderer base on electron-vite cli.
   // Load the remote URL for development or the local html file for production.

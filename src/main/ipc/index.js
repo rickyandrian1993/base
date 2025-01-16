@@ -9,9 +9,10 @@ export function ipcMainHandler() {
     console.log('Receive from React: ', data)
     mainWindow.webContents.send('message-from-main', 'Hello from Electron main process')
   })
-  ipcMain.on('get-weigh', serialPortListener.getWeigh)
+
   ipcMain.on('close-port', serialPortListener.closePort)
 
+  ipcMain.on('get-weight', listenerServices.getWeight)
   ipcMain.handle('get-mill-server', listenerServices.getMillServer)
   ipcMain.handle('get-system-config', listenerServices.getSystemConfig)
   ipcMain.handle('scan-fingerprint', listenerServices.scanFingerprint)
