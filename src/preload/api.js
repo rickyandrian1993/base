@@ -6,12 +6,6 @@ export const api = {
     const validChannels = ['message-from-main']
     if (validChannels.includes(channel)) ipcRenderer.on(channel, (_, ...args) => callback(...args))
   },
-  sendMessage: (channel, data) => {
-    const validChannels = ['message-from-react']
-    if (validChannels.includes(channel)) {
-      ipcRenderer.send(channel, data)
-    }
-  },
 
   closePort: (channel) => {
     const validChannels = ['close-port']
@@ -37,6 +31,10 @@ export const api = {
     const validChannels = ['on-download-progress']
     if (validChannels.includes(channel))
       return ipcRenderer.on(channel, (_, ...args) => callback(...args))
+  },
+  printDocument: (channel) => {
+    const validChannels = ['print-document']
+    if (validChannels.includes(channel)) return ipcRenderer.send(channel)
   },
   scanFingerprint: async (channel) => {
     const validChannels = ['scan-fingerprint']
