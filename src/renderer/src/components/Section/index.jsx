@@ -24,7 +24,7 @@ const StyledSection = styled.div`
   max-width: ${({ size }) => {
     if (size === 'sm') return 'calc(40% - 4px)'
     if (size === 'md') return 'calc(60% - 4px)'
-    return 'calc(100 - 4px%)'
+    return 'calc(100% - 4px)'
   }};
   
   
@@ -47,7 +47,7 @@ const StyledSection = styled.div`
   .ant-form-item {
     display: flex;
     margin-block: 14px 8px;
-    flex: 1 1 calc(50% - 16px);
+    flex: 1 1 calc(100% / 2 - 16px);
     &:nth-child(odd){
       &:last-child:not(:nth-child(odd)) {
       flex: 1 1 calc(100% - 16px);

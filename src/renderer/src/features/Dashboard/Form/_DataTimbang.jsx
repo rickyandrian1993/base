@@ -66,7 +66,7 @@ function DataTimbang({ form }) {
 }
 const StyledFlex = styled(Flex)`
   .ant-form-item {
-    flex: 1 1 calc(25% - 16px);
+    flex: 1 1 calc(100% / 4 - 16px);
   }
 `
 
