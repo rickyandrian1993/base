@@ -1,8 +1,8 @@
 import { LockOutlined } from '@ant-design/icons'
-import { TextInput, WBButton, WBDivider, WBForm } from '@renderer/components'
+import { TextInput, WBButton, WBForm } from '@renderer/components'
 import { electronRequest } from '@renderer/services/electronCommunication'
 import { validator } from '@renderer/utils/constants'
-import { Col, Form, Modal, Row, Spin, Typography } from 'antd'
+import { Col, Divider, Form, Modal, Row, Spin, Typography } from 'antd'
 import PropTypes from 'prop-types'
 import { useState } from 'react'
 
@@ -30,7 +30,7 @@ const ValidatePassword = ({ open, onCancel, onSuccess }) => {
         footer={null}
         closeIcon={false}
       >
-        <WBDivider />
+        <Divider style={{ borderColor: '#7cb305' }} />
         <WBForm form={form} onFinish={submitPassword}>
           <TextInput
             name="password"
@@ -39,7 +39,7 @@ const ValidatePassword = ({ open, onCancel, onSuccess }) => {
             rules={[validator.require]}
             prefix={<LockOutlined />}
           />
-          <WBDivider />
+          <Divider style={{ borderColor: '#7cb305' }} />
           <Row justify="end" gutter={[8, 0]}>
             <Col>
               <WBButton key="cancel" title="Cancel" danger onClick={onCancel} />

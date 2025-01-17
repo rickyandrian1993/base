@@ -1,5 +1,5 @@
-import { BackgroundImage, WBButton, WBDivider } from '@renderer/components'
-import { Card, Col, Row, Typography } from 'antd'
+import { BackgroundImage, WBButton } from '@renderer/components'
+import { Card, Col, Divider, Row, Typography } from 'antd'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
@@ -41,7 +41,7 @@ const Setting = () => {
             <Typography.Title style={{ textAlign: 'center' }}>
               Sistem Configuration
             </Typography.Title>
-            <WBDivider />
+            <Divider style={{ borderColor: '#7cb305' }} />
           </Col>
         </Row>
         <Row

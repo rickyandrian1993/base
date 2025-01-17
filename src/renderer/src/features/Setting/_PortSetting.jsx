@@ -1,4 +1,4 @@
-import { WBButton, WBDivider, WBForm } from '@renderer/components'
+import { WBButton, WBForm } from '@renderer/components'
 import { SelectInput } from '@renderer/components/Input'
 import { electronRequest } from '@renderer/services/electronCommunication'
 import {
@@ -10,7 +10,7 @@ import {
   validator
 } from '@renderer/utils/constants'
 import { objToFormValue } from '@renderer/utils/globalUtility'
-import { Col, Form, Modal, Row, Spin, Typography } from 'antd'
+import { Col, Divider, Form, Modal, Row, Spin, Typography } from 'antd'
 import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
 
@@ -50,7 +50,7 @@ const PortSetting = ({ open, onCancel }) => {
       footer={null}
       closeIcon={false}
     >
-      <WBDivider />
+      <Divider style={{ borderColor: '#7cb305' }} />
       <Spin spinning={loading}>
         <WBForm
           form={form}
@@ -97,7 +97,7 @@ const PortSetting = ({ open, onCancel }) => {
             options={comOptions}
             allowClear
           />
-          <WBDivider />
+          <Divider style={{ borderColor: '#7cb305' }} />
           <Row justify="end" gutter={[8, 0]}>
             <Col>
               <WBButton key="cancel" title="Cancel" danger onClick={onCancel} />
