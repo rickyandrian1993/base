@@ -12,7 +12,8 @@ function FormSection({ size, bg = false, children }) {
 const StyledSection = styled.div`
   display: flex;
   overflow-y: auto;
-  flex-wrap: wrap;
+  flex-flow: column nowrap;
+  align-items: start;
   width: 100%;
   max-height: calc(100vh - 66px);
   overflow-y: scroll;
@@ -26,12 +27,11 @@ const StyledSection = styled.div`
     if (size === 'md') return 'calc(60% - 4px)'
     return 'calc(100% - 4px)'
   }};
-  
-  
-  & > *{
+
+  & > * {
     background-color: ${({ bg }) => {
       console.log('bg', bg)
-      if (bg) return `var(--primary-color-20)`
+      if (bg) return `var(--card-background-color)`
     }};
     border: 1px solid var(--primary-color-50);
     padding-inline: 8px;
@@ -47,16 +47,16 @@ const StyledSection = styled.div`
   .ant-form-item {
     display: flex;
     margin-block: 14px 8px;
-    flex: 1 1 calc(100% / 2 - 16px);
-    &:nth-child(odd){
+    flex: 1 1 calc(50% - 16px);
+    &:nth-child(odd) {
       &:last-child:not(:nth-child(odd)) {
-      flex: 1 1 calc(100% - 16px);
+        flex: 1 1 calc(100% - 16px);
+      }
     }
-  }
     .ant-row {
       width: 100%;
     }
-  }}
+  }
 `
 
 // Size Guide

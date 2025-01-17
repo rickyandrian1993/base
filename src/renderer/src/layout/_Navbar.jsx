@@ -46,7 +46,7 @@ const NavBox = styled.div`
       padding-block: 8px;
       padding-inline: 8px;
       margin-block: 4px;
-      background-color: var(--neutral-color);
+      background-color: var(--background-color);
       img {
         height: 100%;
         margin: 'auto';
@@ -63,10 +63,10 @@ const NavBox = styled.div`
       a {
         border-radius: 4px;
         padding: 6px;
-        color: var(--neutral-color);
+        color: var(--background-color);
       }
       .active {
-        background-color: var(--neutral-color);
+        background-color: var(--background-color);
         color: var(--primary-color);
       }
       .anticon {

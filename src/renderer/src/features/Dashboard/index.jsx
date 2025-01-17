@@ -32,7 +32,7 @@ const Dashboard = () => {
 
 const PageSpace = styled(WBForm)`
   display: flex;
-  width: calc(100vw - 36px);
+  width: calc(100vw - 32px);
   flex-wrap: wrap;
   gap: 8px;
 `
