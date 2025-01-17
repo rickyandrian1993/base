@@ -27,7 +27,7 @@ export default function Navbar() {
       <nav className="nav-links">{generateLink(MenuList)}</nav>
       <nav className="nav-profile">
         <Clock />
-        <NavLink to={'/'} key={`nav-btn-log`}>
+        <NavLink to={'/login'} key={`nav-btn-log`}>
           <AppstoreFilled />
         </NavLink>
       </nav>
