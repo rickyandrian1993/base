@@ -1,8 +1,8 @@
-import { TextInput, WBButton, WBDivider, WBForm } from '@renderer/components'
+import { TextInput, WBButton, WBForm } from '@renderer/components'
 import { SelectInput } from '@renderer/components/Input'
 import { electronRequest } from '@renderer/services/electronCommunication'
 import { mainMenuType, validator } from '@renderer/utils/constants'
-import { Col, Form, Modal, Row, Spin, Typography } from 'antd'
+import { Col, Divider, Form, Modal, Row, Spin, Typography } from 'antd'
 import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
 
@@ -36,7 +36,7 @@ const MillSetting = ({ open, onCancel }) => {
       footer={null}
       closeIcon={false}
     >
-      <WBDivider />
+      <Divider style={{ borderColor: '#7cb305' }} />
       <WBForm form={form} onFinish={submitHandler}>
         <Spin spinning={loading}>
           <SelectInput
@@ -63,7 +63,7 @@ const MillSetting = ({ open, onCancel }) => {
           rules={[validator.require]}
           allowClear
         />
-        <WBDivider />
+        <Divider style={{ borderColor: '#7cb305' }} />
         <Row justify="end" gutter={[8, 0]}>
           <Col>
             <WBButton key="cancel" title="Cancel" danger onClick={onCancel} />

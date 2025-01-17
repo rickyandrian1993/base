@@ -4,14 +4,7 @@ import styled from 'styled-components'
 
 const WBDivider = ({ children }) => {
   return (
-    <StyledDivider
-      style={{
-        borderColor: '#7cb305',
-        margin: '4px 0'
-      }}
-    >
-      {children}
-    </StyledDivider>
+    <StyledDivider style={{ borderColor: '#7cb305', margin: '4px 0' }}>{children}</StyledDivider>
   )
 }
 const StyledDivider = styled(Divider)`
