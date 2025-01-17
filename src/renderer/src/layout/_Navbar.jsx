@@ -1,5 +1,6 @@
 import { AppstoreFilled } from '@ant-design/icons'
 import wideagri from '@renderer/assets/images/wide.png'
+import { Clock } from '@renderer/components'
 import { MenuList } from '@renderer/routes'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
@@ -24,7 +25,12 @@ export default function Navbar() {
         <span> Weight Bridge System</span>
       </div>
       <nav className="nav-links">{generateLink(MenuList)}</nav>
-      <nav className="nav-profile"></nav>
+      <nav className="nav-profile">
+        <Clock />
+        <NavLink to={'/'} key={`nav-btn-log`}>
+          <AppstoreFilled />
+        </NavLink>
+      </nav>
     </NavBox>
   )
 }
@@ -36,13 +42,28 @@ const NavBox = styled.div`
   padding-inline: 20px;
   display: flex;
   justify-content: space-between;
+  > * {
+    display: flex;
+    align-items: center;
+    a {
+      border-radius: 4px;
+      padding: 6px 8px;
+      color: var(--background-color);
+      &.active,
+      &:hover {
+        background-color: var(--background-color);
+        color: var(--primary-color);
+      }
+    }
+    .anticon {
+      font-size: 14px;
+    }
+  }
   .nav {
     &-logo {
       color: var(--primary-color);
-      display: flex;
       border-radius: 4px;
       gap: 4px;
-      align-items: center;
       padding-block: 8px;
       padding-inline: 8px;
       margin-block: 4px;
@@ -57,20 +78,16 @@ const NavBox = styled.div`
       }
     }
     &-links {
-      display: flex;
-      align-items: center;
       gap: 16px;
-      a {
-        border-radius: 4px;
-        padding: 6px;
-        color: var(--background-color);
-      }
-      .active {
-        background-color: var(--background-color);
-        color: var(--primary-color);
-      }
       .anticon {
         margin-right: 4px;
+      }
+    }
+    &-profile {
+      gap: 8px;
+      color: var(--background-color);
+      .anticon {
+        padding-inline: 4px;
       }
     }
   }
