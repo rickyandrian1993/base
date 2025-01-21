@@ -4,6 +4,7 @@ import {
   LoginOutlined,
   PoweroffOutlined,
   SecurityScanOutlined,
+  SyncOutlined,
   UserOutlined
 } from '@ant-design/icons'
 import wideagri from '@renderer/assets/images/wide.png'
@@ -59,6 +60,14 @@ const LoginForm = () => {
               shape="circle"
               icon={<SecurityScanOutlined />}
               onClick={() => console.log('Fingerprint')}
+            />,
+            <Button
+              key="update_data"
+              title="Update Data"
+              type="primary"
+              shape="circle"
+              icon={<SyncOutlined />}
+              onClick={() => console.log('Update Data')}
             />,
             <Button
               key="exit"

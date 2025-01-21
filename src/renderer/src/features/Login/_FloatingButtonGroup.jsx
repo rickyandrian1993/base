@@ -1,10 +1,4 @@
-import {
-  ApiOutlined,
-  CloseOutlined,
-  SettingOutlined,
-  SlidersOutlined,
-  SyncOutlined
-} from '@ant-design/icons'
+import { SettingOutlined, SlidersOutlined } from '@ant-design/icons'
 import { FloatButton } from 'antd'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -27,17 +21,9 @@ const FloatingButtonGroup = () => {
   //   console.log('res', res)
   // }
 
-  const getWeight = () => {
-    // electronRequest(
-    //   'getWeight',
-    //   (loading) => console.log('loading', loading),
-    //   {},
-    //   (res) => console.log('res', res)
-    // )
-    window.api.getWeight('get-weight')
-  }
+  // const getWeight = () => window.api.getWeight('get-weight')
 
-  const closePort = () => window.api.closePort('close-port')
+  // const closePort = () => window.api.closePort('close-port')
 
   const navigateHandler = () => {
     setOpen(false)
@@ -68,17 +54,12 @@ const FloatingButtonGroup = () => {
         icon={<SettingOutlined />}
         tooltip={<span>Setting</span>}
       >
-        <FloatButton
+        {/* <FloatButton
           icon={<CloseOutlined />}
           tooltip={<span>Close Port</span>}
           onClick={closePort}
         />
-        <FloatButton icon={<ApiOutlined />} tooltip={<span>Get Weigh</span>} onClick={getWeight} />
-        <FloatButton
-          icon={<SyncOutlined />}
-          tooltip={<span>Update Data</span>}
-          // onClick={updateDataHandler}
-        />
+        <FloatButton icon={<ApiOutlined />} tooltip={<span>Get Weigh</span>} onClick={getWeight} /> */}
         <FloatButton
           icon={<SlidersOutlined />}
           tooltip={<span>System Configuration</span>}

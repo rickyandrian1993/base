@@ -30,7 +30,6 @@ const StyledSection = styled.div`
 
   & > * {
     background-color: ${({ bg }) => {
-      console.log('bg', bg)
       if (bg) return `var(--card-background-color)`
     }};
     border: 1px solid var(--primary-color-50);
@@ -48,6 +47,9 @@ const StyledSection = styled.div`
     display: flex;
     margin-block: 14px 8px;
     flex: 1 1 calc(50% - 16px);
+    .ant-row .ant-form-item-label {
+      background-color: var(--card-background-color);
+    }
     &:nth-child(odd) {
       &:last-child:not(:nth-child(odd)) {
         flex: 1 1 calc(100% - 16px);

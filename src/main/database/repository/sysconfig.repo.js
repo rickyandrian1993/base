@@ -1,3 +1,4 @@
+import { logToFile } from '@main/logger'
 import { QueryTypes } from 'sequelize'
 import { sequelize } from '../connection'
 import models from '../models'
@@ -21,9 +22,21 @@ const SysConfigRepository = {
   },
 
   async update(payload) {
-    await SystemConfig.update({ config: payload.config }, { where: { id: payload.id } })
+    const transaction = await sequelize.transaction()
+    try {
+      await SystemConfig.update(
+        { config: payload.config },
+        { where: { id: payload.id }, transaction }
+      )
 
-    return this.findOne()
+      await transaction.commit()
+
+      return this.findOne()
+    } catch (error) {
+      await transaction.rollback()
+      logToFile(`Error Transaction rolled back due to an error: ${error}`)
+      throw new Error(`Transaction rolled back due to an error:', ${error}`)
+    }
   }
 }
 

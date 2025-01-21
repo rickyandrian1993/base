@@ -61,12 +61,38 @@ function DataTimbang({ form }) {
         }}
         allowClear
       />
+      <TextInput
+        name="username"
+        label="Nomor"
+        rules={[validator.require]}
+        prefix={<UserOutlined />}
+        onChange={(e) => {
+          const value = e.target.value.toUpperCase()
+          form.setFieldsValue({
+            [e.target.name]: value.replace(new RegExp(/[^A-Z_0-9]/gi), '')
+          })
+        }}
+        allowClear
+      />
+      <TextInput
+        name="username"
+        label="Nomor"
+        rules={[validator.require]}
+        prefix={<UserOutlined />}
+        onChange={(e) => {
+          const value = e.target.value.toUpperCase()
+          form.setFieldsValue({
+            [e.target.name]: value.replace(new RegExp(/[^A-Z_0-9]/gi), '')
+          })
+        }}
+        allowClear
+      />
     </StyledFlex>
   )
 }
 const StyledFlex = styled(Flex)`
   .ant-form-item {
-    flex: 1 1 calc(100% / 4 - 16px);
+    flex: 1 1 calc(100% / 3 - 16px);
   }
 `
 
