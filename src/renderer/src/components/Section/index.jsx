@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-function FormSection({ size, bg = false, children }) {
+function FormSection({ size, bg = 'false', children }) {
   return (
     <StyledSection size={size} bg={bg}>
       {children}
@@ -30,7 +30,7 @@ const StyledSection = styled.div`
 
   & > * {
     background-color: ${({ bg }) => {
-      if (bg) return `var(--card-background-color)`
+      if (bg === 'true') return `var(--card-background-color)`
     }};
     border: 1px solid var(--primary-color-50);
     padding-inline: 8px;
@@ -67,7 +67,7 @@ const StyledSection = styled.div`
 // full= fullwidth
 
 FormSection.propTypes = {
-  bg: PropTypes.bool,
+  bg: PropTypes.string,
   size: PropTypes.oneOf(['sm', 'md', 'full']),
   children: PropTypes.node.isRequired
 }

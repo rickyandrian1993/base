@@ -1,6 +1,7 @@
 import { WBForm } from '@renderer/components'
 import FormSection from '@renderer/components/Section'
-import { Form } from 'antd'
+import { Form, Spin } from 'antd'
+import { createContext, useState } from 'react'
 import styled from 'styled-components'
 import ActionData from './Form/_ActionData'
 import DataGrading from './Form/_DataGrading'
@@ -10,23 +11,36 @@ import DataTimbang from './Form/_DataTimbang'
 import DataUmum from './Form/_DataUmum'
 import NoPol from './Form/_NoPol'
 
+export const DashboardContext = createContext(null)
+
 const Dashboard = () => {
   const [form] = Form.useForm()
+  const [loading, setLoading] = useState(false)
+
+  const ctxValues = {
+    form,
+    loading,
+    setLoading
+  }
 
   return (
-    <PageSpace>
-      <FormSection size="sm" bg>
-        <NoPol form={form} />
-        <DataUmum form={form} />
-      </FormSection>
-      <FormSection size="md" bg>
-        <DataTimbang form={form} />
-        <DataKualitas form={form} />
-        <DataGrading form={form} />
-        <DataRekapitulasi form={form} />
-        <ActionData form={form} />
-      </FormSection>
-    </PageSpace>
+    <Spin spinning={loading}>
+      <DashboardContext.Provider value={ctxValues}>
+        <PageSpace>
+          <FormSection size="sm" bg="true">
+            <NoPol form={form} />
+            <DataUmum form={form} />
+          </FormSection>
+          <FormSection size="md" bg="true">
+            <DataTimbang form={form} />
+            <DataKualitas form={form} />
+            <DataGrading form={form} />
+            <DataRekapitulasi form={form} />
+            <ActionData form={form} />
+          </FormSection>
+        </PageSpace>
+      </DashboardContext.Provider>
+    </Spin>
   )
 }
 

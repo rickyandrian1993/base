@@ -4,7 +4,13 @@ import PropTypes from 'prop-types'
 const NumberInput = ({ name, label, rules = [], placeholder, addonAfter = '', ...rest }) => {
   return (
     <Form.Item name={name} label={label} rules={rules}>
-      <InputNumber placeholder={placeholder} addonAfter={addonAfter} {...rest} />
+      <InputNumber
+        placeholder={placeholder}
+        addonAfter={addonAfter}
+        controls={false}
+        min={0}
+        {...rest}
+      />
     </Form.Item>
   )
 }

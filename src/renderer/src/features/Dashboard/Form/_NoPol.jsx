@@ -1,30 +1,35 @@
-import { UserOutlined } from '@ant-design/icons'
 import { WBInput } from '@renderer/components'
 import { validator } from '@renderer/utils/constants'
 import { Flex } from 'antd'
-import PropTypes from 'prop-types'
+import { useContext } from 'react'
+import { DashboardContext } from '..'
 
-function NoPol({ form }) {
+const groupedOptions = [
+  {
+    label: 'Second Weigh',
+    options: ['KB1234AC', 'KB1111AC', 'KB4838LK']
+  },
+  {
+    label: 'Master Vehicle',
+    options: ['KB2222AA', 'KB3333AB', 'KB9230AJ']
+  }
+]
+
+function NoPol() {
+  const { form } = useContext(DashboardContext)
+
   return (
     <Flex wrap>
-      <WBInput.Text
-        name="username"
+      <WBInput.GroupedSelect
+        name="vehicle_id"
         label="No Polisi"
         rules={[validator.require]}
-        prefix={<UserOutlined />}
-        onChange={(e) => {
-          const value = e.target.value.toUpperCase()
-          form.setFieldsValue({
-            [e.target.name]: value.replace(new RegExp(/[^A-Z_0-9]/gi), '')
-          })
-        }}
+        optionsGroup={groupedOptions}
         allowClear
       />
       <WBInput.Text
-        name="username"
+        name="contract_number"
         label="Nomor"
-        rules={[validator.require]}
-        prefix={<UserOutlined />}
         onChange={(e) => {
           const value = e.target.value.toUpperCase()
           form.setFieldsValue({
@@ -35,10 +40,6 @@ function NoPol({ form }) {
       />
     </Flex>
   )
-}
-
-NoPol.propTypes = {
-  form: PropTypes.object.isRequired
 }
 
 export default NoPol

@@ -1,6 +1,4 @@
-import { UserOutlined } from '@ant-design/icons'
 import { WBDivider, WBInput } from '@renderer/components'
-import { validator } from '@renderer/utils/constants'
 import { Flex } from 'antd'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
@@ -9,84 +7,12 @@ function DataKualitas({ form }) {
   return (
     <StyledFlex wrap>
       <WBDivider orientation="left">Kualitas</WBDivider>
-      <WBInput.Text
-        name="username"
-        label="No Polisi"
-        rules={[validator.require]}
-        prefix={<UserOutlined />}
-        onChange={(e) => {
-          const value = e.target.value.toUpperCase()
-          form.setFieldsValue({
-            [e.target.name]: value.replace(new RegExp(/[^A-Z_0-9]/gi), '')
-          })
-        }}
-        allowClear
-      />
-      <WBInput.Text
-        name="username"
-        label="Nomor"
-        rules={[validator.require]}
-        prefix={<UserOutlined />}
-        onChange={(e) => {
-          const value = e.target.value.toUpperCase()
-          form.setFieldsValue({
-            [e.target.name]: value.replace(new RegExp(/[^A-Z_0-9]/gi), '')
-          })
-        }}
-        allowClear
-      />
-      <WBInput.Text
-        name="username"
-        label="No Polisi"
-        rules={[validator.require]}
-        prefix={<UserOutlined />}
-        onChange={(e) => {
-          const value = e.target.value.toUpperCase()
-          form.setFieldsValue({
-            [e.target.name]: value.replace(new RegExp(/[^A-Z_0-9]/gi), '')
-          })
-        }}
-        allowClear
-      />
-      <WBInput.Text
-        name="username"
-        label="Nomor"
-        rules={[validator.require]}
-        prefix={<UserOutlined />}
-        onChange={(e) => {
-          const value = e.target.value.toUpperCase()
-          form.setFieldsValue({
-            [e.target.name]: value.replace(new RegExp(/[^A-Z_0-9]/gi), '')
-          })
-        }}
-        allowClear
-      />
-      <WBInput.Text
-        name="username"
-        label="No Polisi"
-        rules={[validator.require]}
-        prefix={<UserOutlined />}
-        onChange={(e) => {
-          const value = e.target.value.toUpperCase()
-          form.setFieldsValue({
-            [e.target.name]: value.replace(new RegExp(/[^A-Z_0-9]/gi), '')
-          })
-        }}
-        allowClear
-      />
-      <WBInput.Text
-        name="username"
-        label="Nomor"
-        rules={[validator.require]}
-        prefix={<UserOutlined />}
-        onChange={(e) => {
-          const value = e.target.value.toUpperCase()
-          form.setFieldsValue({
-            [e.target.name]: value.replace(new RegExp(/[^A-Z_0-9]/gi), '')
-          })
-        }}
-        allowClear
-      />
+      <WBInput.Number name="quality_ffa" label="FFA" addonAfter="%" placeholder="0.00" />
+      <WBInput.Number name="quality_moist" label="Moist" addonAfter="%" placeholder="0.00" />
+      <WBInput.Number name="quality_dirt" label="Dirt" addonAfter="%" placeholder="0.00" />
+      <WBInput.Number name="quality_pv" label="PV" addonAfter="%" placeholder="0.00" />
+      <WBInput.Number name="quality_bk" label="BK" addonAfter="%" placeholder="0.00" />
+      <WBInput.Number name="quality_dobi" label="Dobi" placeholder="0.0000" />
     </StyledFlex>
   )
 }
