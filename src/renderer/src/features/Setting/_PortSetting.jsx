@@ -1,5 +1,4 @@
-import { WBButton, WBForm } from '@renderer/components'
-import { SelectInput } from '@renderer/components/Input'
+import { WBButton, WBForm, WBInput } from '@renderer/components'
 import { electronRequest } from '@renderer/services/electronCommunication'
 import {
   baudrateOptions,
@@ -57,7 +56,7 @@ const PortSetting = ({ open, onCancel }) => {
           onFinish={submitHandler}
           fields={objToFormValue(data?.config?.port_setting)}
         >
-          <SelectInput
+          <WBInput.Select
             name="baudrate"
             label="Baudrate"
             placeholder="Please select baudrate"
@@ -65,7 +64,7 @@ const PortSetting = ({ open, onCancel }) => {
             options={baudrateOptions}
             allowClear
           />
-          <SelectInput
+          <WBInput.Select
             name="databits"
             label="Data Bits"
             placeholder="Please select data bits"
@@ -73,7 +72,7 @@ const PortSetting = ({ open, onCancel }) => {
             options={bitsOptions}
             allowClear
           />
-          <SelectInput
+          <WBInput.Select
             name="stopbits"
             label="Stop Bits"
             placeholder="Please select stop bits"
@@ -81,7 +80,7 @@ const PortSetting = ({ open, onCancel }) => {
             options={stopBitOptions}
             allowClear
           />
-          <SelectInput
+          <WBInput.Select
             name="parity"
             label="Parity"
             placeholder="Please select Parity"
@@ -89,7 +88,7 @@ const PortSetting = ({ open, onCancel }) => {
             options={parityOptions}
             allowClear
           />
-          <SelectInput
+          <WBInput.Select
             name="com"
             label="COM"
             placeholder="Please select COM"

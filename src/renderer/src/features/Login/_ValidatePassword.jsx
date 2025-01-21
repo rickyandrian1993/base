@@ -1,5 +1,5 @@
 import { LockOutlined } from '@ant-design/icons'
-import { TextInput, WBButton, WBForm } from '@renderer/components'
+import { WBButton, WBForm, WBInput } from '@renderer/components'
 import { electronRequest } from '@renderer/services/electronCommunication'
 import { validator } from '@renderer/utils/constants'
 import { Col, Divider, Form, Modal, Row, Spin, Typography } from 'antd'
@@ -32,7 +32,7 @@ const ValidatePassword = ({ open, onCancel, onSuccess }) => {
       >
         <Divider style={{ borderColor: '#7cb305' }} />
         <WBForm form={form} onFinish={submitPassword}>
-          <TextInput
+          <WBInput.Text
             name="password"
             label="Password"
             placeholder="Please input password"

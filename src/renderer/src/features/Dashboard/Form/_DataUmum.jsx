@@ -1,5 +1,5 @@
 import { UserOutlined } from '@ant-design/icons'
-import { TextInput, WBDivider } from '@renderer/components'
+import { WBDivider, WBInput } from '@renderer/components'
 import { validator } from '@renderer/utils/constants'
 import { Flex } from 'antd'
 import PropTypes from 'prop-types'
@@ -8,7 +8,7 @@ function DataUmum({ form }) {
   return (
     <Flex wrap>
       <WBDivider orientation="left">Data Umum</WBDivider>
-      <TextInput
+      <WBInput.Text
         name="username"
         label="Nomor"
         rules={[validator.require]}
@@ -21,7 +21,7 @@ function DataUmum({ form }) {
         }}
         allowClear
       />
-      <TextInput
+      <WBInput.Text
         name="username"
         label="Nomor"
         rules={[validator.require]}
@@ -34,7 +34,7 @@ function DataUmum({ form }) {
         }}
         allowClear
       />
-      <TextInput
+      <WBInput.Text
         name="username"
         label="Nomor"
         rules={[validator.require]}
@@ -47,7 +47,7 @@ function DataUmum({ form }) {
         }}
         allowClear
       />
-      <TextInput
+      <WBInput.Text
         name="username"
         label="Nomor"
         rules={[validator.require]}
@@ -60,7 +60,7 @@ function DataUmum({ form }) {
         }}
         allowClear
       />
-      <TextInput
+      <WBInput.Text
         name="username"
         label="Nomor"
         rules={[validator.require]}
@@ -73,7 +73,7 @@ function DataUmum({ form }) {
         }}
         allowClear
       />
-      <TextInput
+      <WBInput.Text
         name="username"
         label="Nomor"
         rules={[validator.require]}
@@ -86,7 +86,7 @@ function DataUmum({ form }) {
         }}
         allowClear
       />
-      <TextInput
+      <WBInput.Text
         name="username"
         label="Nomor"
         rules={[validator.require]}
@@ -99,7 +99,7 @@ function DataUmum({ form }) {
         }}
         allowClear
       />
-      <TextInput
+      <WBInput.Text
         name="username"
         label="Nomor"
         rules={[validator.require]}
@@ -112,7 +112,7 @@ function DataUmum({ form }) {
         }}
         allowClear
       />
-      <TextInput
+      <WBInput.Text
         name="username"
         label="Nomor"
         rules={[validator.require]}
@@ -125,7 +125,7 @@ function DataUmum({ form }) {
         }}
         allowClear
       />
-      <TextInput
+      <WBInput.Text
         name="username"
         label="Nomor"
         rules={[validator.require]}
@@ -138,7 +138,7 @@ function DataUmum({ form }) {
         }}
         allowClear
       />
-      <TextInput
+      <WBInput.Text
         name="username"
         label="Nomor"
         rules={[validator.require]}
@@ -151,7 +151,7 @@ function DataUmum({ form }) {
         }}
         allowClear
       />
-      <TextInput
+      <WBInput.Text
         name="username"
         label="Nomor"
         rules={[validator.require]}
@@ -164,7 +164,7 @@ function DataUmum({ form }) {
         }}
         allowClear
       />
-      <TextInput
+      <WBInput.Text
         name="username"
         label="Nomor"
         rules={[validator.require]}
@@ -178,7 +178,7 @@ function DataUmum({ form }) {
         allowClear
       />
       <WBDivider />
-      <TextInput
+      <WBInput.Text
         name="username"
         label="Nomor"
         rules={[validator.require]}
@@ -191,7 +191,7 @@ function DataUmum({ form }) {
         }}
         allowClear
       />
-      <TextInput
+      <WBInput.Text
         name="username"
         label="Nomor"
         rules={[validator.require]}
@@ -204,7 +204,7 @@ function DataUmum({ form }) {
         }}
         allowClear
       />
-      <TextInput
+      <WBInput.Text
         name="username"
         label="Nomor"
         rules={[validator.require]}
@@ -217,7 +217,7 @@ function DataUmum({ form }) {
         }}
         allowClear
       />
-      <TextInput
+      <WBInput.Text
         name="username"
         label="Nomor"
         rules={[validator.require]}
@@ -230,7 +230,7 @@ function DataUmum({ form }) {
         }}
         allowClear
       />
-      <TextInput
+      <WBInput.Text
         name="username"
         label="Nomor"
         rules={[validator.require]}

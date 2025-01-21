@@ -1,5 +1,5 @@
 import { UserOutlined } from '@ant-design/icons'
-import { TextInput, WBDivider } from '@renderer/components'
+import { WBDivider, WBInput } from '@renderer/components'
 import { validator } from '@renderer/utils/constants'
 import { Flex } from 'antd'
 import PropTypes from 'prop-types'
@@ -9,7 +9,7 @@ function DataRekapitulasi({ form }) {
   return (
     <StyledFlex wrap>
       <WBDivider orientation="left">Rekapitulasi</WBDivider>
-      <TextInput
+      <WBInput.Text
         name="username"
         label="No Polisi"
         rules={[validator.require]}
@@ -22,7 +22,7 @@ function DataRekapitulasi({ form }) {
         }}
         allowClear
       />
-      <TextInput
+      <WBInput.Text
         name="username"
         label="Nomor"
         rules={[validator.require]}
@@ -35,7 +35,7 @@ function DataRekapitulasi({ form }) {
         }}
         allowClear
       />
-      <TextInput
+      <WBInput.Text
         name="username"
         label="No Polisi"
         rules={[validator.require]}
@@ -48,7 +48,7 @@ function DataRekapitulasi({ form }) {
         }}
         allowClear
       />
-      <TextInput
+      <WBInput.Text
         name="username"
         label="Nomor"
         rules={[validator.require]}

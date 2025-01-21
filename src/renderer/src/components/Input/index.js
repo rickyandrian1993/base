@@ -1,5 +1,6 @@
-import GroupedSelectInput from './GroupedSelect'
-import SelectInput from './Select'
-import TextInput from './Text'
+import GroupedSelect from './GroupedSelect'
+import Number from './Number'
+import Select from './Select'
+import Text from './Text'
 
-export { GroupedSelectInput, SelectInput, TextInput }
+export { GroupedSelect, Number, Select, Text }

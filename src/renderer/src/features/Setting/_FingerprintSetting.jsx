@@ -1,6 +1,5 @@
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons'
-import { WBButton, WBForm } from '@renderer/components'
-import { SelectInput } from '@renderer/components/Input'
+import { WBButton, WBForm, WBInput } from '@renderer/components'
 import { electronRequest } from '@renderer/services/electronCommunication'
 import { comOptions, validator } from '@renderer/utils/constants'
 import { Button, Col, Divider, Form, Input, Modal, Row, Spin, Table, Typography } from 'antd'
@@ -77,7 +76,7 @@ const Fingerprint = ({ open, onCancel }) => {
         <Col span={12}>
           <Spin spinning={loading}>
             <WBForm form={form} onFinish={submitHandler}>
-              <SelectInput
+              <WBInput.Select
                 name="user"
                 label="User"
                 placeholder="Please select user"
@@ -85,7 +84,7 @@ const Fingerprint = ({ open, onCancel }) => {
                 options={comOptions}
                 allowClear
               />
-              <SelectInput
+              <WBInput.Select
                 name="role"
                 label="Role"
                 placeholder="Please select role"

@@ -1,5 +1,4 @@
-import { TextInput, WBButton, WBForm } from '@renderer/components'
-import { SelectInput } from '@renderer/components/Input'
+import { WBButton, WBForm, WBInput } from '@renderer/components'
 import { electronRequest } from '@renderer/services/electronCommunication'
 import { mainMenuType, validator } from '@renderer/utils/constants'
 import { Col, Divider, Form, Modal, Row, Spin, Typography } from 'antd'
@@ -39,7 +38,7 @@ const MillSetting = ({ open, onCancel }) => {
       <Divider style={{ borderColor: '#7cb305' }} />
       <WBForm form={form} onFinish={submitHandler}>
         <Spin spinning={loading}>
-          <SelectInput
+          <WBInput.Select
             name="mill"
             label="Mill"
             placeholder="Please select mill"
@@ -48,7 +47,7 @@ const MillSetting = ({ open, onCancel }) => {
             allowClear
           />
         </Spin>
-        <SelectInput
+        <WBInput.Select
           name="uitype"
           label="Main Menu Type"
           placeholder="Please select main menu type"
@@ -56,7 +55,7 @@ const MillSetting = ({ open, onCancel }) => {
           options={mainMenuType}
           allowClear
         />
-        <TextInput
+        <WBInput.Text
           name="kop"
           label="KOP Default"
           placeholder="Please input default KOP"

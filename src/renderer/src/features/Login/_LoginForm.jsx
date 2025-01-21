@@ -1,5 +1,4 @@
 import {
-  BankOutlined,
   LockOutlined,
   LoginOutlined,
   PoweroffOutlined,
@@ -8,11 +7,11 @@ import {
   UserOutlined
 } from '@ant-design/icons'
 import wideagri from '@renderer/assets/images/wide.png'
-import { TextInput, WBForm } from '@renderer/components'
+import { WBForm, WBInput } from '@renderer/components'
 import { electronRequest } from '@renderer/services/electronCommunication'
 import { validator } from '@renderer/utils/constants'
 import { setStorage } from '@renderer/utils/globalUtility'
-import { Button, Card, Form, Input, Spin, Typography } from 'antd'
+import { Button, Card, Form, Spin, Typography } from 'antd'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
@@ -24,10 +23,9 @@ const LoginForm = () => {
 
   const submitHandler = (values) => {
     electronRequest('login', setLoading, values, (res) => {
-      console.log('res', res)
       if (res.code === 200) {
         setStorage('isLoggedIn', true)
-        navigate('/dashboard')
+        navigate('/')
       }
     })
   }
@@ -81,7 +79,7 @@ const LoginForm = () => {
           ]}
         >
           <Typography.Title style={{ textAlign: 'center' }}>Weigh Bridge System</Typography.Title>
-          <TextInput
+          <WBInput.Text
             name="username"
             label="Username"
             placeholder="Please input username"
@@ -95,14 +93,14 @@ const LoginForm = () => {
             }}
             allowClear
           />
-          <TextInput
+          <WBInput.Text
             name="password"
             label="Password"
             placeholder="Please input password"
             rules={[validator.require]}
             prefix={<LockOutlined />}
           />
-          <Input name="mill" prefix={<BankOutlined />} placeholder="Mill" disabled />
+          {/* <Input name="mill" prefix={<BankOutlined />} placeholder="Mill" disabled /> */}
         </StyledCard>
       </WBForm>
     </Spin>

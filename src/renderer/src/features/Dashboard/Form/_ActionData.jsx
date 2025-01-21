@@ -1,5 +1,5 @@
 import { UserOutlined } from '@ant-design/icons'
-import { TextInput } from '@renderer/components'
+import { WBInput } from '@renderer/components'
 import { validator } from '@renderer/utils/constants'
 import { Flex } from 'antd'
 import PropTypes from 'prop-types'
@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 function ActionData({ form }) {
   return (
     <Flex wrap>
-      <TextInput
+      <WBInput.Text
         name="username"
         label="No Polisi"
         rules={[validator.require]}
@@ -20,7 +20,7 @@ function ActionData({ form }) {
         }}
         allowClear
       />
-      <TextInput
+      <WBInput.Text
         name="username"
         label="Nomor"
         rules={[validator.require]}

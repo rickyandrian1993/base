@@ -7,7 +7,6 @@ import styled from 'styled-components'
 
 export default function Navbar() {
   const generateLink = (list) => {
-    console.log('list', list)
     return (
       list &&
       list.map(({ path, name }) => (
@@ -18,6 +17,7 @@ export default function Navbar() {
       ))
     )
   }
+
   return (
     <NavBox>
       <div className="nav-logo">
