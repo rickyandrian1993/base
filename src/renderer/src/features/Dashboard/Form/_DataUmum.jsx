@@ -2,9 +2,12 @@ import { UserOutlined } from '@ant-design/icons'
 import { WBDivider, WBInput } from '@renderer/components'
 import { validator } from '@renderer/utils/constants'
 import { Flex } from 'antd'
-import PropTypes from 'prop-types'
+import { useContext } from 'react'
+import { DashboardContext } from '..'
 
-function DataUmum({ form }) {
+function DataUmum() {
+  const { form } = useContext(DashboardContext)
+
   return (
     <Flex wrap>
       <WBDivider orientation="left">Data Umum</WBDivider>
@@ -245,10 +248,6 @@ function DataUmum({ form }) {
       />
     </Flex>
   )
-}
-
-DataUmum.propTypes = {
-  form: PropTypes.object.isRequired
 }
 
 export default DataUmum

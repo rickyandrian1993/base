@@ -2,10 +2,13 @@ import { UserOutlined } from '@ant-design/icons'
 import { WBDivider, WBInput } from '@renderer/components'
 import { validator } from '@renderer/utils/constants'
 import { Flex } from 'antd'
-import PropTypes from 'prop-types'
+import { useContext } from 'react'
 import styled from 'styled-components'
+import { DashboardContext } from '..'
 
-function DataRekapitulasi({ form }) {
+function DataRekapitulasi() {
+  const { form } = useContext(DashboardContext)
+
   return (
     <StyledFlex wrap>
       <WBDivider orientation="left">Rekapitulasi</WBDivider>
@@ -64,6 +67,7 @@ function DataRekapitulasi({ form }) {
     </StyledFlex>
   )
 }
+
 const StyledFlex = styled(Flex)`
   .ant-form-item {
     flex: 1 1 calc(100% / 5 - 16px);
@@ -72,9 +76,5 @@ const StyledFlex = styled(Flex)`
     }
   }
 `
-
-DataRekapitulasi.propTypes = {
-  form: PropTypes.object.isRequired
-}
 
 export default DataRekapitulasi

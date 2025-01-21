@@ -6,7 +6,7 @@ import { DashboardContext } from '..'
 
 const groupedOptions = [
   {
-    label: 'Second Weigh',
+    label: 'Second Weight',
     options: ['KB1234AC', 'KB1111AC', 'KB4838LK']
   },
   {

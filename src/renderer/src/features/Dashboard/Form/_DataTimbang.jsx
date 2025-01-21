@@ -2,10 +2,13 @@ import { UserOutlined } from '@ant-design/icons'
 import { WBDivider, WBInput } from '@renderer/components'
 import { validator } from '@renderer/utils/constants'
 import { Flex } from 'antd'
-import PropTypes from 'prop-types'
+import { useContext } from 'react'
 import styled from 'styled-components'
+import { DashboardContext } from '..'
 
-function DataTimbang({ form }) {
+function DataTimbang() {
+  const { form } = useContext(DashboardContext)
+
   return (
     <StyledFlex wrap>
       <WBDivider orientation="left">Data Timbang</WBDivider>
@@ -90,14 +93,11 @@ function DataTimbang({ form }) {
     </StyledFlex>
   )
 }
+
 const StyledFlex = styled(Flex)`
   .ant-form-item {
     flex: 1 1 calc(100% / 3 - 16px);
   }
 `
-
-DataTimbang.propTypes = {
-  form: PropTypes.object.isRequired
-}
 
 export default DataTimbang

@@ -23,20 +23,24 @@ const Dashboard = () => {
     setLoading
   }
 
+  const submitHandler = (values) => {
+    console.log('values', values)
+  }
+
   return (
     <Spin spinning={loading}>
       <DashboardContext.Provider value={ctxValues}>
-        <PageSpace>
+        <PageSpace form={form} onFinish={submitHandler}>
           <FormSection size="sm" bg="true">
-            <NoPol form={form} />
-            <DataUmum form={form} />
+            <NoPol />
+            <DataUmum />
           </FormSection>
           <FormSection size="md" bg="true">
-            <DataTimbang form={form} />
-            <DataKualitas form={form} />
-            <DataGrading form={form} />
-            <DataRekapitulasi form={form} />
-            <ActionData form={form} />
+            <DataTimbang />
+            <DataKualitas />
+            <DataGrading />
+            <DataRekapitulasi />
+            <ActionData />
           </FormSection>
         </PageSpace>
       </DashboardContext.Provider>

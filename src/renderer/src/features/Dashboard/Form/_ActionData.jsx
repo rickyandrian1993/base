@@ -1,44 +1,34 @@
-import { UserOutlined } from '@ant-design/icons'
-import { WBInput } from '@renderer/components'
-import { validator } from '@renderer/utils/constants'
-import { Flex } from 'antd'
-import PropTypes from 'prop-types'
+import { WBButton } from '@renderer/components'
+import { Col, Flex, Input, Row } from 'antd'
+import styled from 'styled-components'
 
-function ActionData({ form }) {
+function ActionData() {
   return (
-    <Flex wrap>
-      <WBInput.Text
-        name="username"
-        label="No Polisi"
-        rules={[validator.require]}
-        prefix={<UserOutlined />}
-        onChange={(e) => {
-          const value = e.target.value.toUpperCase()
-          form.setFieldsValue({
-            [e.target.name]: value.replace(new RegExp(/[^A-Z_0-9]/gi), '')
-          })
-        }}
-        allowClear
-      />
-      <WBInput.Text
-        name="username"
-        label="Nomor"
-        rules={[validator.require]}
-        prefix={<UserOutlined />}
-        onChange={(e) => {
-          const value = e.target.value.toUpperCase()
-          form.setFieldsValue({
-            [e.target.name]: value.replace(new RegExp(/[^A-Z_0-9]/gi), '')
-          })
-        }}
-        allowClear
-      />
-    </Flex>
+    <ActionStyled gutter={[0, 8]}>
+      <Col span={12}>
+        <Input.TextArea
+          placeholder="Autosize height with minimum and maximum number of lines"
+          autoSize={{
+            minRows: 4,
+            maxRows: 6
+          }}
+          disabled
+        />
+      </Col>
+      <Col span={12}>
+        <Flex justify="space-around" gap={8} wrap>
+          <WBButton title="Bersihkan" danger />
+          <WBButton title="NFC" />
+          <WBButton title="Timbang" />
+          <WBButton type="primary" htmlType="submit" title="Simpan" />
+        </Flex>
+      </Col>
+    </ActionStyled>
   )
 }
 
-ActionData.propTypes = {
-  form: PropTypes.object.isRequired
-}
+const ActionStyled = styled(Row)`
+  padding: 8px;
+`
 
 export default ActionData
