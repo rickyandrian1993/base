@@ -42,7 +42,6 @@ const StyledForm = styled(Form)`
       margin: 6px 8px;
     }
     .ant-form-item-explain-error {
-      margin-bottom: 8px;
       padding-inline: 8px;
     }
 

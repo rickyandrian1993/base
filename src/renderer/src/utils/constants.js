@@ -1,3 +1,5 @@
+export const dateFormat = 'DD MMM  YYYY'
+
 export const baudrateOptions = [
   { value: 1200, label: '1200' },
   { value: 2400, label: '2400' },

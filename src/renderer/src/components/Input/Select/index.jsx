@@ -9,7 +9,7 @@ const SelectInput = ({ name, label, rules = [], placeholder, ...rest }) => {
     <Form.Item name={name} label={label} rules={rules}>
       <Select
         popupMatchSelectWidth={false}
-        placeholder={placeholder}
+        placeholder={placeholder ?? `Please Select ${label}`}
         showSearch
         filterOption={filterOption}
         {...rest}

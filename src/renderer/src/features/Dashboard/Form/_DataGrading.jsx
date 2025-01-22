@@ -150,6 +150,9 @@ const StyledFlex = styled(Flex)`
   .ant-form-item {
     flex: 1 1 calc(100% / 4 - 16px);
     margin-block: 8px;
+    &-control-input {
+      padding-inline: 6px;
+    }
     .ant-input-number-affix-wrapper {
       width: 100%;
     }

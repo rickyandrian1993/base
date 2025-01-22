@@ -9,6 +9,7 @@ import DataKualitas from './Form/_DataKualitas'
 import DataRekapitulasi from './Form/_DataRekapitulasi'
 import DataTimbang from './Form/_DataTimbang'
 import DataUmum from './Form/_DataUmum'
+import HiddenForm from './Form/_HiddenForm'
 import NoPol from './Form/_NoPol'
 
 export const DashboardContext = createContext(null)
@@ -31,6 +32,9 @@ const Dashboard = () => {
     <Spin spinning={loading}>
       <DashboardContext.Provider value={ctxValues}>
         <PageSpace form={form} onFinish={submitHandler}>
+          {/* Hidden Input for id */}
+          <HiddenForm />
+
           <FormSection size="sm" bg="true">
             <NoPol />
             <DataUmum />
@@ -53,6 +57,9 @@ const PageSpace = styled(WBForm)`
   width: calc(100vw - 32px);
   flex-wrap: wrap;
   gap: 8px;
+  .ant-input-number-affix-wrapper {
+    width: 100%;
+  }
 `
 
 export default Dashboard
