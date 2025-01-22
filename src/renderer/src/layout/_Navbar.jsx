@@ -11,7 +11,6 @@ export default function Navbar() {
       list &&
       list.map(({ path, name }) => (
         <NavLink to={path} key={`nav-btn-${name}`}>
-          <AppstoreFilled />
           <span>{name}</span>
         </NavLink>
       ))
