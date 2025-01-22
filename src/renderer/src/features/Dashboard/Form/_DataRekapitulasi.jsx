@@ -1,68 +1,23 @@
-import { UserOutlined } from '@ant-design/icons'
 import { WBDivider, WBInput } from '@renderer/components'
-import { validator } from '@renderer/utils/constants'
 import { Flex } from 'antd'
 import { useContext } from 'react'
 import styled from 'styled-components'
 import { DashboardContext } from '..'
 
 function DataRekapitulasi() {
-  const { form } = useContext(DashboardContext)
+  const { rekapData } = useContext(DashboardContext)
 
   return (
     <StyledFlex wrap>
       <WBDivider orientation="left">Rekapitulasi</WBDivider>
-      <WBInput.Text
-        name="username"
-        label="No Polisi"
-        rules={[validator.require]}
-        prefix={<UserOutlined />}
-        onChange={(e) => {
-          const value = e.target.value.toUpperCase()
-          form.setFieldsValue({
-            [e.target.name]: value.replace(new RegExp(/[^A-Z_0-9]/gi), '')
-          })
-        }}
-        allowClear
-      />
-      <WBInput.Text
-        name="username"
-        label="Nomor"
-        rules={[validator.require]}
-        prefix={<UserOutlined />}
-        onChange={(e) => {
-          const value = e.target.value.toUpperCase()
-          form.setFieldsValue({
-            [e.target.name]: value.replace(new RegExp(/[^A-Z_0-9]/gi), '')
-          })
-        }}
-        allowClear
-      />
-      <WBInput.Text
-        name="username"
-        label="No Polisi"
-        rules={[validator.require]}
-        prefix={<UserOutlined />}
-        onChange={(e) => {
-          const value = e.target.value.toUpperCase()
-          form.setFieldsValue({
-            [e.target.name]: value.replace(new RegExp(/[^A-Z_0-9]/gi), '')
-          })
-        }}
-        allowClear
-      />
-      <WBInput.Text
-        name="username"
-        label="Nomor"
-        rules={[validator.require]}
-        prefix={<UserOutlined />}
-        onChange={(e) => {
-          const value = e.target.value.toUpperCase()
-          form.setFieldsValue({
-            [e.target.name]: value.replace(new RegExp(/[^A-Z_0-9]/gi), '')
-          })
-        }}
-        allowClear
+      <WBInput.Number defaultValue={rekapData.tbs} label="TBS" placeholder="0.00" disabled />
+      <WBInput.Number defaultValue={rekapData.cpo} label="CPO" placeholder="0.00" disabled />
+      <WBInput.Number defaultValue={rekapData.kernel} label="Kernel" placeholder="0.00" disabled />
+      <WBInput.Number
+        defaultValue={rekapData.others}
+        label="Lain-lain"
+        placeholder="0.00"
+        disabled
       />
     </StyledFlex>
   )

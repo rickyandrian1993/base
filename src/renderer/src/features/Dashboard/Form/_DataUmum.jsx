@@ -54,17 +54,11 @@ function DataUmum() {
         label="Komoditi"
         rules={[validator.require]}
         options={comOptions}
-        onChange={(e) => {
-          const value = e.target.value.toUpperCase()
-          form.setFieldsValue({
-            [e.target.name]: value.replace(new RegExp(/[^A-Z_0-9]/gi), '')
-          })
-        }}
         allowClear
       />
       <WBInput.Number name="total_brondolan" label="Brondolan" placeholder="0.00" suffix="Kg" />
+      <WBInput.Text name="loader" label="Pemuat" allowClear />
       <WBInput.Number name="spb_weight" label="Berat SPB" placeholder="0.00" suffix="Kg" />
-      <span className="ant-form-item" />
       <WBDivider />
       <WBInput.Text name="spb_number" label="No. SPB" allowClear />
       <WBInput.Date name="spb_date" label="Tanggal SPB" allowClear />

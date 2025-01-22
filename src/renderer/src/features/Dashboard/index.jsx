@@ -17,11 +17,18 @@ export const DashboardContext = createContext(null)
 const Dashboard = () => {
   const [form] = Form.useForm()
   const [loading, setLoading] = useState(false)
+  const [rekapData, setRekapData] = useState({
+    tbs: 0,
+    cpo: 0,
+    kernel: 0,
+    others: 0
+  })
 
   const ctxValues = {
     form,
     loading,
-    setLoading
+    setLoading,
+    rekapData
   }
 
   const submitHandler = (values) => {
