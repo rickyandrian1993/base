@@ -1,17 +1,27 @@
 import { WBButton } from '@renderer/components'
-import { Col, Flex, Input, Row } from 'antd'
-import { useContext, useEffect } from 'react'
+import { Col, Flex, List, Row } from 'antd'
+import { useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { DashboardContext } from '..'
 
 function ActionData() {
   const { form } = useContext(DashboardContext)
+  const [data, setData] = useState([])
 
   const clearHandler = () => form.resetFields()
 
   const getWeight = () => window.api.getWeight('get-weight')
 
   const closePort = () => window.api.closePort('close-port')
+
+  const loadData = () => {
+    fetch('https://randomuser.me/api/?results=10&inc=name,gender,email,nat,picture&noinfo')
+      .then((res) => res.json())
+      .then((body) => {
+        setData(body.results)
+      })
+      .catch(() => {})
+  }
 
   useEffect(() => {
     window.api.setWeight('set-weight', (data) => {
@@ -21,20 +31,32 @@ function ActionData() {
       console.log('data', data)
     })
 
+    loadData()
+
     return () => window.api.setWeight(() => {})
   }, [])
 
   return (
     <ActionStyled gutter={[0, 8]}>
       <Col span={12}>
-        <Input.TextArea
-          placeholder="Autosize height with minimum and maximum number of lines"
-          autoSize={{
-            minRows: 4,
-            maxRows: 6
+        <div
+          style={{
+            height: 70,
+            overflow: 'auto',
+            padding: '0 16px',
+            border: '1px solid rgba(140, 140, 140, 0.35)'
           }}
-          disabled
-        />
+        >
+          <List
+            dataSource={data}
+            renderItem={(item) => (
+              <div key={item.email}>
+                {item.name.title} {item.name.first} {item.name.last}
+                <br />
+              </div>
+            )}
+          />
+        </div>
       </Col>
       <Col span={12}>
         <Flex justify="space-around" gap={8} wrap>
