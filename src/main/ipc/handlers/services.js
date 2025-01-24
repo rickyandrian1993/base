@@ -7,6 +7,7 @@ import UserController from '@main/database/controllers/userController'
 import ValidationController from '@main/database/controllers/validation.controller'
 
 export const listenerServices = {
+  closePort: async () => await SerialPortController.closePort(),
   getDataUser: async () => await UserController.getAllUsers(),
 
   getMillServer: async () => await MillController.getMillServer(),

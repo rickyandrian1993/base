@@ -1,11 +1,14 @@
-import { AppstoreFilled } from '@ant-design/icons'
+import { LogoutOutlined } from '@ant-design/icons'
 import wideagri from '@renderer/assets/images/wide.png'
-import { Clock } from '@renderer/components'
+import { Clock, WBButton } from '@renderer/components'
 import { MenuList } from '@renderer/routes'
-import { NavLink } from 'react-router-dom'
+import { clearStorage } from '@renderer/utils/globalUtility'
+import { NavLink, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
 export default function Navbar() {
+  const navigate = useNavigate()
+
   const generateLink = (list) => {
     return (
       list &&
@@ -17,18 +20,21 @@ export default function Navbar() {
     )
   }
 
+  const logoutHandle = () => {
+    clearStorage()
+    navigate('/login')
+  }
+
   return (
     <NavBox>
       <div className="nav-logo">
         <img alt="Wide Agri" src={wideagri} />
-        <span> Weight Bridge System</span>
+        <span>Weight Bridge System</span>
       </div>
       <nav className="nav-links">{generateLink(MenuList)}</nav>
       <nav className="nav-profile">
         <Clock />
-        <NavLink to={'/login'} key={`nav-btn-log`}>
-          <AppstoreFilled />
-        </NavLink>
+        <WBButton title="" danger shape="circle" icon={<LogoutOutlined />} onClick={logoutHandle} />
       </nav>
     </NavBox>
   )

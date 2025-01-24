@@ -27,7 +27,13 @@ const SerialPortController = {
 
         const parser = port.pipe(new ReadlineParser({ delimiter: '\r\n' }))
 
-        parser.on('data', (data) => mainWindow.webContents.send('set-weight', data))
+        parser.on('data', (data) => {
+          let weight = data.substring(0, data.indexOf('kg'))
+          weight = weight.trim()
+          weight = weight.substring(weight.lastIndexOf(' '))
+
+          mainWindow.webContents.send('set-weight', weight)
+        })
       } else {
         mainWindow.webContents.send('message-from-main', 'System config for port not available')
       }
